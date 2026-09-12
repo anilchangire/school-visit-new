@@ -17,38 +17,65 @@
             
             <!-- मुख्य शीर्षक -->
             <header class="header-section">
-                <h1>🏫 शैक्षणिक शाळा भेट प्रपत्र</h1>
+                <h1> शैक्षणिक शाळा भेट प्रपत्र</h1>
             </header>
 
             <form id="schoolVisitForm">
 
-                <!-- १. शाळेची माहिती (Card Box) -->
+                <!-- १. सर्वसाधारण व शाळेची माहिती (Card Box) -->
                 <div class="card">
                     <div class="card-header">
-                        <h3>१. शाळेची माहिती</h3>
+                        <h3>१. सर्वसाधारण व शाळेची माहिती</h3>
                     </div>
                     <div class="card-body">
                         
+                        <!-- भेट देणाऱ्या अधिकाऱ्याचे नाव -->
+                        <div class="form-group">
+                            <label for="officerName">भेट देणाऱ्या अधिकाऱ्याचे नाव:</label>
+                            <input type="text" id="officerName" name="officerName" value="श्री अनिल बाबुराव चांगिरे" readonly style="background-color: #f0f0f0; font-weight: bold;">
+                        </div>
+
+                        <!-- पदनाम व केंद्र -->
+                        <div class="form-group">
+                            <label for="officerDesignation">पदनाम व केंद्र:</label>
+                            <input type="text" id="officerDesignation" name="officerDesignation" value="केंद्रप्रमुख / केंद्र समन्वयक (समूह साधन केंद्र - कन्या नागापूर)" readonly style="background-color: #f0f0f0;">
+                        </div>
+
+                        <!-- तालुका व जिल्हा -->
+                        <div class="form-group">
+                            <label for="officerTaluka">तालुका व जिल्हा:</label>
+                            <input type="text" id="officerTaluka" name="officerTaluka" value="ता. परळी वै. जि. बीड" readonly style="background-color: #f0f0f0;">
+                        </div>
+
+                        <!-- भेटीचा दिनांक (कॅलेंडर निवड) -->
+                        <div class="form-group">
+                            <label for="visitDate">भेटीचा दिनांक:</label>
+                            <input type="date" id="visitDate" name="visitDate" required>
+                        </div>
+
+                        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ccc;">
+
                         <!-- शाळेचे नाव -->
                         <div class="form-group">
                             <label for="schoolName">शाळेचे नाव निवडा:</label>
                             <select id="schoolName" name="schoolName" required onchange="updateSchoolDetails()">
                                 <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
-                                <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27280100101" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
-                                <option value="जि.प.मा.शाळा नागापूर" data-udise="27280100102" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
-                                <option value="जि.प.प्रा.शाळा डाबी" data-udise="27280100201" data-hm="सौ.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
-                                <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27280100202" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
-                                <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27280100301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
-                                <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27280100302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
-                                <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27280100401" data-hm="श्री.के.बी.माडजे">जि.प.प्रा.शाळा एकबाली तांडा</option>
-                                <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27280100501" data-hm="श्रीमती एस.के.लाड">जि.प.प्रा.शाळा दौनापुर तांडा</option>
-                                <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27280100502" data-hm="श्री.आर.टी.मंत्रे">जि.प.प्रा.शाळा दौनापूर</option>
-                                <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27280100601" data-hm=" श्री.एम.बी.बडगिरे">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
-                                <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27280100701" data-hm="श्रीमती चिद्दरवार ए.डीी">जि.प.प्रा.शाळा बहादुरवाडी</option>
-                                <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27280100103" data-hm="श्री.एन.पी.मुंडे">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
-                                <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27280100104" data-hm="श्रीमती एस.एस.बनसोडे">रमाबाई प्राथमिक शाळा नागापूर</option>
-                                <option value="बालाघाट विद्यालय दौनापूर" data-udise="27280100503" data-hm="श्री.एम.व्ही.कराड ">बालाघाट विद्यालय दौनापूर</option>
-                                </select>
+                                <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27280100101" data-hm="श्री. अ ब क">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
+                                <option value="जि.प.मा.शाळा नागापूर" data-udise="27280100102" data-hm="श्री. एक्स वाय झेड">जि.प.मा.शाळा नागापूर</option>
+                                <option value="जि.प.प्रा.शाळा डाबी" data-udise="27280100201" data-hm="सौ. पी क्यू आर">जि.प.प्रा.शाळा डाबी</option>
+                                <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27280100202" data-hm="श्री. एम एन ओ">जि.प.प्रा.शाळा डाबी तांडा</option>
+                                <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27280100301" data-hm="श्री. व्ही डब्लू एक्स">जि.प.प्रा.शाळा वानटाकळी</option>
+                                <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27280100302" data-hm="सौ. ई एफ जी">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
+                                <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27280100401" data-hm="श्री. एच आय जे">जि.प.प्रा.शाळा एकबाली तांडा</option>
+                                <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27280100501" data-hm="सौ. के एल एम">जि.प.प्रा.शाळा दौनापुर तांडा</option>
+                                <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27280100502" data-hm="श्री. एन ओ पी">जि.प.प्रा.शाळा दौनापूर</option>
+                                <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27280100601" data-hm="सौ. क्यू आर एस">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
+                                <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27280100701" data-hm="श्री. टी यु व्ही">जि.प.प्रा.शाळा बहादुरवाडी</option>
+                                <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27280100103" data-hm="श्री. डब्ल्यू एक्स वाय">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
+                                <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27280100104" data-hm="सौ. वाय झेड ए">रमाबाई प्राथमिक शाळा नागापूर</option>
+                                <option value="बालाघाट विद्यालय दौनापूर" data-udise="27280100503" data-hm="श्री. बी सी डी">बालाघाट विद्यालय दौनापूर</option>
+                                <option value="इतर" data-udise="" data-hm="">इतर</option>
+                            </select>
                         </div>
 
                         <!-- यु-डायस कोड (ऑटो-फील्ड) -->
@@ -78,6 +105,9 @@
 
     <!-- JavaScript code -->
     <script>
+        // आजची तारीख बाय-डिफॉल्ट सेट करण्यासाठी
+        document.getElementById('visitDate').valueAsDate = new Date();
+
         // शाळा निवडल्यावर यु-डायस कोड आणि मुख्याध्यापकांचे नाव आपोआप अपडेट होण्याचे फंक्शन
         function updateSchoolDetails() {
             const selectElement = document.getElementById('schoolName');
