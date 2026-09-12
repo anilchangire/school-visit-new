@@ -28,27 +28,37 @@
                         <h3>१. शाळेची माहिती</h3>
                     </div>
                     <div class="card-body">
+                        
+                        <!-- शाळेचे नाव -->
                         <div class="form-group">
                             <label for="schoolName">शाळेचे नाव निवडा:</label>
-                            <select id="schoolName" name="schoolName" required>
-                                <option value="">-- शाळा निवडा --</option>
-                                
-        <option value="SCH01">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
-        <option value="SCH02">जि.प.मा.शाळा नागापूर</option>
-        <option value="SCH03">जि.प.प्रा.शाळा डाबी</option>
-        <option value="SCH04">जि.प.प्रा.शाळा डाबी तांडा</option>
-        <option value="SCH05">जि.प.प्रा.शाळा वानटाकळी</option>
-        <option value="SCH06">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
-        <option value="SCH07">जि.प.प्रा.शाळा एकबाली तांडा</option>
-        <option value="SCH08">जि.प.प्रा.शाळा दौनापुर तांडा</option>
-        <option value="SCH09">जि.प.प्रा.शाळा दौनापूर</option>
-        <option value="SCH10">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
-        <option value="SCH11">जि.प.प्रा.शाळा बहादूरवाडी</option>
-        <option value="SCH12">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
-        <option value="SCH13">रमाबाई प्राथमिक शाळा नागापूर</option>
-        <option value="SCH14">बालाघाट विद्यालय दौनापूर</option>
-      </select>
-    </div>
+                            <select id="schoolName" name="schoolName" required onchange="updateUdiseCode()">
+                                <option value="" data-udise="">-- शाळा निवडा --</option>
+                                <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
+                                <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002">जि.प.मा.शाळा नागापूर</option>
+                                <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101">जि.प.प्रा.शाळा डाबी</option>
+                                <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27270804701">जि.प.प्रा.शाळा डाबी तांडा</option>
+                                <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27270804301">जि.प.प्रा.शाळा वानटाकळी</option>
+                                <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27270804501">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
+                                <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27270804302">जि.प.प्रा.शाळा एकबाली तांडा</option>
+                                <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27270804601">जि.प.प्रा.शाळा दौनापुर तांडा</option>
+                                <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27270804201">जि.प.प्रा.शाळा दौनापूर</option>
+                                <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27270804801">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
+                                <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27270804401">जि.प.प्रा.शाळा बहादुरवाडी</option>
+                                <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27270804004">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
+                                <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27270804003">रमाबाई प्राथमिक शाळा नागापूर</option>
+                                <option value="बालाघाट विद्यालय दौनापूर" data-udise="27270804202">बालाघाट विद्यालय दौनापूर</option>
+                            </select>
+                        </div>
+
+                        <!-- यु-डायस कोड (आपोआप भरणारा ऑटो-फील्ड) -->
+                        <div class="form-group">
+                            <label for="udiseCode">शाळेचा यु-डायस क्रमांक (UDISE Code):</label>
+                            <input type="text" id="udiseCode" name="udiseCode" placeholder="शाळा निवडल्यावर आपोआप येईल" readonly style="background-color: #f0f0f0;">
+                        </div>
+
+                    </div>
+                </div>
 
                 <!-- बटन्स (Print/PDF आणि Submit) -->
                 <div class="button-group no-print">
@@ -62,6 +72,15 @@
 
     <!-- JavaScript code -->
     <script>
+        // शाळा निवडल्यावर यु-डायस कोड आपोआप अपडेट होण्याचे फंक्शन
+        function updateUdiseCode() {
+            const selectElement = document.getElementById('schoolName');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const udiseCode = selectedOption.getAttribute('data-udise') || '';
+            
+            document.getElementById('udiseCode').value = udiseCode;
+        }
+
         // PDF तयार करण्याचे फंक्शन
         function generatePDF() {
             const element = document.getElementById('formToPrint');
@@ -73,11 +92,9 @@
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             
-            // PDF डाऊनलोड करताना बटन्स लपवणे
             document.querySelector('.button-group').style.display = 'none';
             
             html2pdf().set(options).from(element).save().then(() => {
-                // PDF डाऊनलोड झाल्यावर बटन्स पुन्हा दाखवणे
                 document.querySelector('.button-group').style.display = 'flex';
             });
         }
