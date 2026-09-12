@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="style.css">
     <!-- html2pdf Library for PDF Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* PDF मधील मोकळी जागा (Blank Space) काढण्यासाठी CSS */
+        #formToPrint {
+            background-color: #ffffff;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            margin-bottom: 12px !important;
+            padding: 10px !important;
+        }
+
+        .form-group {
+            margin-bottom: 6px !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,7 +35,7 @@
             
             <!-- मुख्य शीर्षक -->
             <header class="header-section">
-                <h1>शैक्षणिक शाळा भेट प्रपत्र</h1>
+                <h1 style="margin: 0 0 10px 0; text-align: center;">शैक्षणिक शाळा भेट प्रपत्र</h1>
             </header>
 
             <form id="schoolVisitForm">
@@ -63,12 +81,12 @@
                             <input type="text" id="headmasterName" name="headmasterName" placeholder="शाळा निवडल्यावर आपोआप येईल" readonly style="background-color: #f0f0f0;">
                         </div>
 
-                        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ccc;">
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
 
                         <!-- ४) भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम -->
                         <div class="form-group">
                             <label>भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम :-</label>
-                            <div style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px; border-radius: 4px; font-weight: normal; line-height: 1.6; color: #333;">
+                            <div style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 8px 10px; border-radius: 4px; font-weight: normal; line-height: 1.5; color: #333;">
                                 श्री अनिल बाबुराव चांगिरे, केंद्रप्रमुख /केंद्र समन्वयक<br>
                                 समूह साधन केंद्र कन्या नागापूर,<br>
                                 ता. परळी वै. जि. बीड
@@ -85,14 +103,14 @@
                 </div>
 
                 <!-- २. विद्यार्थी व शिक्षक उपस्थिती (Card Box) -->
-                <div class="card" style="margin-top: 20px;">
+                <div class="card" style="margin-top: 15px;">
                     <div class="card-header">
                         <h3>२. विद्यार्थी व शिक्षक उपस्थिती</h3>
                     </div>
                     <div class="card-body">
                         
                         <!-- अ ) विद्यार्थी उपस्थिती :- -->
-                        <h4 style="margin-bottom: 12px; color: #2c3e50;">अ ) विद्यार्थी उपस्थिती :-</h4>
+                        <h4 style="margin: 10px 0 8px 0; color: #2c3e50;">अ ) विद्यार्थी उपस्थिती :-</h4>
                         
                         <div class="form-group">
                             <label for="totalStudents">एकूण पट :-</label>
@@ -109,10 +127,10 @@
                             <input type="number" id="absentStudentsLong" name="absentStudentsLong" placeholder="संख्या टाका">
                         </div>
 
-                        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #ccc;">
+                        <hr style="margin: 15px 0; border: 0; border-top: 1px dashed #ccc;">
 
                         <!-- ब ) शिक्षक उपस्थिती :- -->
-                        <h4 style="margin-bottom: 12px; color: #2c3e50;">ब ) शिक्षक उपस्थिती :-</h4>
+                        <h4 style="margin: 10px 0 8px 0; color: #2c3e50;">ब ) शिक्षक उपस्थिती :-</h4>
 
                         <div class="form-group">
                             <label for="totalTeachers">एकूण शिक्षक :-</label>
@@ -138,7 +156,7 @@
                 </div>
 
                 <!-- बटन्स (Print/PDF आणि Submit) -->
-                <div class="button-group no-print" style="margin-top: 25px;">
+                <div class="button-group no-print" style="margin-top: 20px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
                     <button type="submit" class="btn btn-submit">☁️ Drive वर सेव्ह करा</button>
                 </div>
@@ -164,21 +182,30 @@
             document.getElementById('headmasterName').value = headmasterName;
         }
 
-        // PDF तयार करण्याचे फंक्शन
+        // मोकळी जागा न सोडता PDF तयार करण्याचे अचूक फंक्शन
         function generatePDF() {
+            // PDF बनवण्यापूर्वी पेज सर्व्हे अगदी वर स्क्रोल करणे
+            window.scrollTo(0, 0);
+
             const element = document.getElementById('formToPrint');
+            const btnGroup = document.querySelector('.button-group');
+            
+            if (btnGroup) btnGroup.style.display = 'none';
+
             const options = {
-                margin:       10,
+                margin:       [5, 5, 5, 5],
                 filename:     'शैक्षणिक_शाळा_भेट_प्रपत्र.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
+                html2canvas:  { 
+                    scale: 2, 
+                    scrollY: 0, 
+                    useCORS: true 
+                },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             
-            document.querySelector('.button-group').style.display = 'none';
-            
             html2pdf().set(options).from(element).save().then(() => {
-                document.querySelector('.button-group').style.display = 'flex';
+                if (btnGroup) btnGroup.style.display = 'flex';
             });
         }
 
