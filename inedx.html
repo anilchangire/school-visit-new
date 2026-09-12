@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शैक्षणिक शाळा भेट प्रपत्र</title>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+    <!-- html2pdf Library PDF डाऊनलोड करण्यासाठी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- PDF मध्ये येणारा मुख्य भाग -->
+        <div id="formToPrint" class="form-container">
+            
+            <!-- मुख्य शीर्षक -->
+            <header class="header-section">
+                <h1>🏫 शैक्षणिक शाळा भेट प्रपत्र</h1>
+            </header>
+
+            <form id="schoolVisitForm">
+
+                <!-- येथे तुमचे दिलेले मुद्दे आणि उपमुद्दे बॉक्सेस (Cards) च्या रूपात जोडले जातील -->
+                <div id="formSections">
+                    <!-- उदाहरणासाठी पहिला बॉक्स (तुम्ही मुद्दे दिल्यावर आपण इथे ॲड करत जाऊ) -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>१. प्राथमिक माहिती (उदा.)</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="schoolName">शाळेचे नाव:</label>
+                                <input type="text" id="schoolName" name="schoolName" placeholder="शाळेचे नाव टाका">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- बटन्स (Print/PDF आणि Submit) -->
+                <div class="button-group no-print">
+                    <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
+                    <button type="submit" class="btn btn-submit">☁️ Drive वर सेव्ह करा</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+        // PDF तयार करण्याचे फंक्शन
+        function generatePDF() {
+            const element = document.getElementById('formToPrint');
+            const options = {
+                margin:       10,
+                filename:     'शैक्षणिक_शाळा_भेट_प्रपत्र.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            // बटन्स PDF मध्ये येणार नाहीत यासाठी
+            document.querySelector('.button-group').style.display = 'none';
+            
+            html2pdf().set(options).from(element).save().then(() => {
+                document.querySelector('.button-group').style.display = 'flex';
+            });
+        }
+
+        // Google Drive / Sheet वर डेटा पाठवण्यासाठी फॉर्म सबमिशन
+        document.getElementById('schoolVisitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('माहिती Google Drive / Sheet मध्ये पाठवली जात आहे...');
+            // Google Apps Script URL जोडल्यानंतर इथे कोड सक्रिय होईल.
+        });
+    </script>
+</body>
+</html>
