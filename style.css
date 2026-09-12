@@ -146,3 +146,21 @@ input[type="number"] {
         flex-direction: column;
     }
 }
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #ffffff;
+    height: 42px; /* फिक्स उंची ज्यामुळे ड्रॉपडाऊन पसरणार नाही */
+    cursor: pointer;
+    -webkit-appearance: menulist; /* मोबाईल व ब्राऊझरवर ड्रॉपडाऊन चिन्ह दाखवण्यासाठी */
+    -moz-appearance: menulist;
+    appearance: menulist;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
