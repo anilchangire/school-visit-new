@@ -37,6 +37,88 @@
                         </div>
                     </div>
                 </div>
+                <!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शैक्षणिक शाळा भेट प्रपत्र</title>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+    <!-- html2pdf Library PDF डाऊनलोड करण्यासाठी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- PDF मध्ये येणारा मुख्य भाग -->
+        <div id="formToPrint" class="form-container">
+            
+            <!-- मुख्य शीर्षक -->
+            <header class="header-section">
+                <h1>🏫 शैक्षणिक शाळा भेट प्रपत्र</h1>
+            </header>
+
+            <form id="schoolVisitForm">
+
+                <!-- १. शाळेची माहिती (Card Box) -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>१. शाळेची माहिती</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="schoolName">शाळेचे नाव निवडा:</label>
+                            <select id="schoolName" name="schoolName" required>
+                                <option value="">-- शाळा निवडा --</option>
+                                <option value="जि. प. प्राथ. शाळा १">जि. प. प्राथ. शाळा १</option>
+                                <option value="जि. प. प्राथ. शाळा २">जि. प. प्राथ. शाळा २</option>
+                                <option value="जि. प. प्राथ. शाळा ३">जि. प. प्राथ. शाळा ३</option>
+                                <option value="जि. प. प्राथ. शाळा ४">जि. प. प्राथ. शाळा ४</option>
+                                <option value="इतर">इतर (खाली नोंदवा)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- बटन्स (Print/PDF आणि Submit) -->
+                <div class="button-group no-print">
+                    <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
+                    <button type="submit" class="btn btn-submit">☁️ Drive वर सेव्ह करा</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+        // PDF तयार करण्याचे फंक्शन
+        function generatePDF() {
+            const element = document.getElementById('formToPrint');
+            const options = {
+                margin:       10,
+                filename:     'शैक्षणिक_शाळा_भेट_प्रपत्र.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            document.querySelector('.button-group').style.display = 'none';
+            
+            html2pdf().set(options).from(element).save().then(() => {
+                document.querySelector('.button-group').style.display = 'flex';
+            });
+        }
+
+        // Google Drive / Sheet सबमिशन
+        document.getElementById('schoolVisitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('माहिती Google Drive / Sheet मध्ये सेव्ह होत आहे...');
+        });
+    </script>
+</body>
+</html>
 
                 <!-- बटन्स (Print/PDF आणि Submit) -->
                 <div class="button-group no-print">
