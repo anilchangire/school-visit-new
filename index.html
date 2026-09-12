@@ -10,20 +10,86 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        /* PDF मधील मोकळी जागा (Blank Space) काढण्यासाठी CSS */
-        #formToPrint {
-            background-color: #ffffff;
-            padding: 15px;
-            box-sizing: border-box;
+        /* सर्वसाधारण प्रोफेशनल डिझाईन */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         .card {
-            margin-bottom: 12px !important;
-            padding: 10px !important;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            background: #fff;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
         }
 
-        .form-group {
-            margin-bottom: 6px !important;
+        .card-header {
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-bottom: 1px solid #dcdcdc;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            color: #1a5276;
+            font-size: 16px;
+        }
+
+        .card-body {
+            padding: 12px 15px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /* -------------------------------------------------- */
+        /* 🚨 पीडीएफ / प्रिंट काढताना प्लेसहोल्डर (सूचना) लपवणे */
+        /* -------------------------------------------------- */
+        @media print {
+            ::placeholder {
+                color: transparent !important;
+            }
+            ::-webkit-input-placeholder {
+                color: transparent !important;
+            }
+            ::-moz-placeholder {
+                color: transparent !important;
+            }
+            :-ms-input-placeholder {
+                color: transparent !important;
+            }
+        }
+
+        /* html2pdf साठी खास वर्ग (PDF मोड सुरु असताना सूचना लपवणे) */
+        .pdf-mode ::placeholder {
+            color: transparent !important;
+        }
+        .pdf-mode ::-webkit-input-placeholder {
+            color: transparent !important;
         }
     </style>
 </head>
@@ -35,7 +101,7 @@
             
             <!-- मुख्य शीर्षक -->
             <header class="header-section">
-                <h1 style="margin: 0 0 10px 0; text-align: center;">शैक्षणिक शाळा भेट प्रपत्र</h1>
+                <h1 style="margin: 0 0 15px 0; text-align: center; color: #1a5276; font-size: 22px;">शैक्षणिक शाळा भेट प्रपत्र</h1>
             </header>
 
             <form id="schoolVisitForm">
@@ -70,23 +136,23 @@
                         </div>
 
                         <!-- २) यु-डायस कोड -->
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 8px;">
                             <label for="udiseCode">शाळेचा यु-डायस क्रमांक (UDISE Code):</label>
-                            <input type="text" id="udiseCode" name="udiseCode" placeholder="शाळा निवडल्यावर आपोआप येईल" readonly style="background-color: #f0f0f0;">
+                            <input type="text" id="udiseCode" name="udiseCode" placeholder="शाळा निवडल्यावर आपोआप येईल" readonly style="background-color: #f9f9f9;">
                         </div>
 
                         <!-- ३) मुख्याध्यापकांचे नाव -->
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 8px;">
                             <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
-                            <input type="text" id="headmasterName" name="headmasterName" placeholder="शाळा निवडल्यावर आपोआप येईल" readonly style="background-color: #f0f0f0;">
+                            <input type="text" id="headmasterName" name="headmasterName" placeholder="शाळा निवडल्यावर आपोआप येईल" readonly style="background-color: #f9f9f9;">
                         </div>
 
-                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
 
                         <!-- ४) भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम -->
                         <div class="form-group">
                             <label>भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम :-</label>
-                            <div style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 8px 10px; border-radius: 4px; font-weight: normal; line-height: 1.5; color: #333;">
+                            <div style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 8px 10px; border-radius: 4px; font-weight: normal; line-height: 1.5; color: #333;">
                                 श्री अनिल बाबुराव चांगिरे, केंद्रप्रमुख /केंद्र समन्वयक<br>
                                 समूह साधन केंद्र कन्या नागापूर,<br>
                                 ता. परळी वै. जि. बीड
@@ -94,7 +160,7 @@
                         </div>
 
                         <!-- ५) भेटीचा दिनांक -->
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 8px;">
                             <label for="visitDate">भेटीचा दिनांक:</label>
                             <input type="date" id="visitDate" name="visitDate" required>
                         </div>
@@ -103,60 +169,64 @@
                 </div>
 
                 <!-- २. विद्यार्थी व शिक्षक उपस्थिती (Card Box) -->
-                <div class="card" style="margin-top: 15px;">
+                <div class="card">
                     <div class="card-header">
                         <h3>२. विद्यार्थी व शिक्षक उपस्थिती</h3>
                     </div>
                     <div class="card-body">
                         
-                        <!-- अ ) विद्यार्थी उपस्थिती :- -->
-                        <h4 style="margin: 10px 0 8px 0; color: #2c3e50;">अ ) विद्यार्थी उपस्थिती :-</h4>
+                        <!-- अ ) विद्यार्थी उपस्थिती :- (एकाच ओळीत समोरासमोर) -->
+                        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">अ ) विद्यार्थी उपस्थिती :-</h4>
                         
-                        <div class="form-group">
-                            <label for="totalStudents">एकूण पट :-</label>
-                            <input type="number" id="totalStudents" name="totalStudents" placeholder="संख्या टाका">
+                        <div style="display: flex; gap: 10px; align-items: flex-end; margin-bottom: 12px;">
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="totalStudents" style="font-size: 13px;">एकूण पट :-</label>
+                                <input type="number" id="totalStudents" name="totalStudents" placeholder="संख्या">
+                            </div>
+
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="presentStudents" style="font-size: 13px;">उपस्थिती :-</label>
+                                <input type="number" id="presentStudents" name="presentStudents" placeholder="संख्या">
+                            </div>
+
+                            <div class="form-group" style="flex: 2; margin-bottom: 0;">
+                                <label for="absentStudentsLong" style="font-size: 13px;">एक महिन्यापेक्षा जास्त काळ गैरहजर विद्यार्थी संख्या :-</label>
+                                <input type="number" id="absentStudentsLong" name="absentStudentsLong" placeholder="संख्या">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="presentStudents">उपस्थिती :-</label>
-                            <input type="number" id="presentStudents" name="presentStudents" placeholder="संख्या टाका">
-                        </div>
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ddd;">
 
-                        <div class="form-group">
-                            <label for="absentStudentsLong">एक महिन्यापेक्षा जास्त काळ गैरहजर विद्यार्थी संख्या :-</label>
-                            <input type="number" id="absentStudentsLong" name="absentStudentsLong" placeholder="संख्या टाका">
-                        </div>
+                        <!-- ब ) शिक्षक उपस्थिती :- (एकाच ओळीत समोरासमोर) -->
+                        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">ब ) शिक्षक उपस्थिती :-</h4>
 
-                        <hr style="margin: 15px 0; border: 0; border-top: 1px dashed #ccc;">
+                        <div style="display: flex; gap: 10px; align-items: flex-end;">
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="totalTeachers" style="font-size: 13px;">एकूण शिक्षक :-</label>
+                                <input type="number" id="totalTeachers" name="totalTeachers" placeholder="संख्या">
+                            </div>
 
-                        <!-- ब ) शिक्षक उपस्थिती :- -->
-                        <h4 style="margin: 10px 0 8px 0; color: #2c3e50;">ब ) शिक्षक उपस्थिती :-</h4>
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="presentTeachers" style="font-size: 13px;">उपस्थिती :-</label>
+                                <input type="number" id="presentTeachers" name="presentTeachers" placeholder="संख्या">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="totalTeachers">एकूण शिक्षक :-</label>
-                            <input type="number" id="totalTeachers" name="totalTeachers" placeholder="संख्या टाका">
-                        </div>
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="leaveTeachers" style="font-size: 13px;">रजा :-</label>
+                                <input type="number" id="leaveTeachers" name="leaveTeachers" placeholder="संख्या">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="presentTeachers">उपस्थिती :-</label>
-                            <input type="number" id="presentTeachers" name="presentTeachers" placeholder="संख्या टाका">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="leaveTeachers">रजा :-</label>
-                            <input type="number" id="leaveTeachers" name="leaveTeachers" placeholder="संख्या टाका">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="trainingTeachers">प्रशिक्षण :-</label>
-                            <input type="number" id="trainingTeachers" name="trainingTeachers" placeholder="संख्या टाका">
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="trainingTeachers" style="font-size: 13px;">प्रशिक्षण :-</label>
+                                <input type="number" id="trainingTeachers" name="trainingTeachers" placeholder="संख्या">
+                            </div>
                         </div>
 
                     </div>
                 </div>
 
                 <!-- बटन्स (Print/PDF आणि Submit) -->
-                <div class="button-group no-print" style="margin-top: 20px;">
+                <div class="button-group no-print" style="margin-top: 20px; display: flex; gap: 10px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
                     <button type="submit" class="btn btn-submit">☁️ Drive वर सेव्ह करा</button>
                 </div>
@@ -167,53 +237,43 @@
 
     <!-- JavaScript code -->
     <script>
-        // आजची तारीख बाय-डिफॉल्ट सेट करण्यासाठी
+        // आजची तारीख बाय-डिफॉल्ट सेट करणे
         document.getElementById('visitDate').valueAsDate = new Date();
 
-        // शाळा निवडल्यावर यु-डायस कोड आणि मुख्याध्यापकांचे नाव आपोआप अपडेट होण्याचे फंक्शन
+        // शाळा निवडल्यावर ऑटो-अपडेट
         function updateSchoolDetails() {
             const selectElement = document.getElementById('schoolName');
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             
-            const udiseCode = selectedOption.getAttribute('data-udise') || '';
-            const headmasterName = selectedOption.getAttribute('data-hm') || '';
-            
-            document.getElementById('udiseCode').value = udiseCode;
-            document.getElementById('headmasterName').value = headmasterName;
+            document.getElementById('udiseCode').value = selectedOption.getAttribute('data-udise') || '';
+            document.getElementById('headmasterName').value = selectedOption.getAttribute('data-hm') || '';
         }
 
-        // मोकळी जागा न सोडता PDF तयार करण्याचे अचूक फंक्शन
+        // PDF जनरेट करताना प्लेसहोल्डर लपवणारे अचूक फंक्शन
         function generatePDF() {
-            // PDF बनवण्यापूर्वी पेज सर्व्हे अगदी वर स्क्रोल करणे
             window.scrollTo(0, 0);
 
             const element = document.getElementById('formToPrint');
             const btnGroup = document.querySelector('.button-group');
             
+            // पीडीएफ क्लास जोडणे (ज्यामुळे प्लेसहोल्डर लपतील)
+            element.classList.add('pdf-mode');
             if (btnGroup) btnGroup.style.display = 'none';
 
             const options = {
-                margin:       [5, 5, 5, 5],
+                margin:       [6, 6, 6, 6],
                 filename:     'शैक्षणिक_शाळा_भेट_प्रपत्र.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { 
-                    scale: 2, 
-                    scrollY: 0, 
-                    useCORS: true 
-                },
+                html2canvas:  { scale: 2, scrollY: 0, useCORS: true },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             
             html2pdf().set(options).from(element).save().then(() => {
+                // PDF डाऊनलोड झाल्यावर पूर्ववत करणे
+                element.classList.remove('pdf-mode');
                 if (btnGroup) btnGroup.style.display = 'flex';
             });
         }
-
-        // Google Drive / Sheet सबमिशन
-        document.getElementById('schoolVisitForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('माहिती Google Drive / Sheet मध्ये सेव्ह होत आहे...');
-        });
     </script>
 </body>
 </html>
