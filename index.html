@@ -15,7 +15,7 @@
         <!-- PDF मध्ये येणारा मुख्य भाग -->
         <div id="formToPrint" class="form-container">
             
-            <!-- मुख्य शीर्षक (इमारतीचा लोगो काढला आहे) -->
+            <!-- मुख्य शीर्षक -->
             <header class="header-section">
                 <h1>शैक्षणिक शाळा भेट प्रपत्र</h1>
             </header>
@@ -65,7 +65,7 @@
 
                         <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ccc;">
 
-                        <!-- ४) भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम (Normal Text, Bold काढले आहे) -->
+                        <!-- ४) भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम -->
                         <div class="form-group">
                             <label>भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम :-</label>
                             <div style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px; border-radius: 4px; font-weight: normal; line-height: 1.6; color: #333;">
@@ -84,8 +84,61 @@
                     </div>
                 </div>
 
+                <!-- २. विद्यार्थी व शिक्षक उपस्थिती (Card Box) -->
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h3>२. विद्यार्थी व शिक्षक उपस्थिती</h3>
+                    </div>
+                    <div class="card-body">
+                        
+                        <!-- अ ) विद्यार्थी उपस्थिती :- -->
+                        <h4 style="margin-bottom: 12px; color: #2c3e50;">अ ) विद्यार्थी उपस्थिती :-</h4>
+                        
+                        <div class="form-group">
+                            <label for="totalStudents">एकूण पट :-</label>
+                            <input type="number" id="totalStudents" name="totalStudents" placeholder="संख्या टाका">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="presentStudents">उपस्थिती :-</label>
+                            <input type="number" id="presentStudents" name="presentStudents" placeholder="संख्या टाका">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="absentStudentsLong">एक महिन्यापेक्षा जास्त काळ गैरहजर विद्यार्थी संख्या :-</label>
+                            <input type="number" id="absentStudentsLong" name="absentStudentsLong" placeholder="संख्या टाका">
+                        </div>
+
+                        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #ccc;">
+
+                        <!-- ब ) शिक्षक उपस्थिती :- -->
+                        <h4 style="margin-bottom: 12px; color: #2c3e50;">ब ) शिक्षक उपस्थिती :-</h4>
+
+                        <div class="form-group">
+                            <label for="totalTeachers">एकूण शिक्षक :-</label>
+                            <input type="number" id="totalTeachers" name="totalTeachers" placeholder="संख्या टाका">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="presentTeachers">उपस्थिती :-</label>
+                            <input type="number" id="presentTeachers" name="presentTeachers" placeholder="संख्या टाका">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="leaveTeachers">रजा :-</label>
+                            <input type="number" id="leaveTeachers" name="leaveTeachers" placeholder="संख्या टाका">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="trainingTeachers">प्रशिक्षण :-</label>
+                            <input type="number" id="trainingTeachers" name="trainingTeachers" placeholder="संख्या टाका">
+                        </div>
+
+                    </div>
+                </div>
+
                 <!-- बटन्स (Print/PDF आणि Submit) -->
-                <div class="button-group no-print">
+                <div class="button-group no-print" style="margin-top: 25px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
                     <button type="submit" class="btn btn-submit">☁️ Drive वर सेव्ह करा</button>
                 </div>
