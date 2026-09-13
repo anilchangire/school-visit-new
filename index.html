@@ -226,8 +226,64 @@
                                 <input type="number" id="trainingTeachers" name="trainingTeachers" placeholder="संख्या">
                             </div>
                         </div>
+<!-- ३. स्वच्छता (Card Box) -->
+<div class="card">
+    <div class="card-header">
+        <h3>३. स्वच्छता</h3>
+    </div>
+    <div class="card-body">
+        
+        <!-- अ ) शालेय परिसर -->
+        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">अ ) शालेय परिसर :-</h4>
+        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
+            
+            <!-- रेडिओ बटन्स (तीनपैकी एक निवडण्यासाठी) -->
+            <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
+                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                    <input type="radio" name="schoolCampus" value="स्वच्छ" style="width: auto; margin-right: 4px;"> १) स्वच्छ
+                </label>
+                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                    <input type="radio" name="schoolCampus" value="अस्वच्छ" style="width: auto; margin-right: 4px;"> २) अस्वच्छ
+                </label>
+                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                    <input type="radio" name="schoolCampus" value="सुशोभनाची आवश्यकता" style="width: auto; margin-right: 4px;"> ३) सुशोभनाची आवश्यकता
+                </label>
+            </div>
 
-                    </div>
+            <!-- शेरा (मराठीत लिहिण्याची अट जोडली आहे) -->
+            <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
+                <label for="campusRemark" style="font-size: 13px;">शेरा :-</label>
+                <input type="text" id="campusRemark" name="campusRemark" 
+                       placeholder="येथे मराठीत शेरा लिहा..." 
+                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
+                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
+            </div>
+        </div>
+
+        <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ddd;">
+
+        <!-- ब ) विद्यार्थी वैयक्तिक स्वच्छता -->
+        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">ब ) विद्यार्थी वैयक्तिक स्वच्छता :-</h4>
+        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+            
+            <!-- चेकबॉक्स समूह (स्वतंत्र निवड) -->
+            <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
+                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                    <input type="checkbox" id="personalHygiene" name="personalHygiene" value="वैयक्तिक शारीरिक स्वच्छता" style="width: auto; margin-right: 4px;"> १) वैयक्तिक शारीरिक स्वच्छता
+                </label>
+                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                    <input type="checkbox" id="cleanUniform" name="cleanUniform" value="स्वच्छ गणवेश" style="width: auto; margin-right: 4px;"> २) स्वच्छ गणवेश
+                </label>
+            </div>
+
+            <!-- शेरा (मराठीत लिहिण्याची अट जोडली आहे) -->
+            <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
+                <label for="studentHygieneRemark" style="font-size: 13px;">शेरा :-</label>
+                <input type="text" id="studentHygieneRemark" name="studentHygieneRemark" 
+                       placeholder="येथे मराठीत शेरा लिहा..." 
+                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
+                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
+            </div>
                 </div>
 
                 <!-- बटन्स (Print/PDF आणि Submit) -->
