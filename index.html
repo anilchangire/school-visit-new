@@ -226,115 +226,123 @@
                                 <input type="number" id="trainingTeachers" name="trainingTeachers" placeholder="संख्या">
                             </div>
                         </div>
-<!-- ३. स्वच्छता (Card Box) -->
-<div class="card">
-    <div class="card-header">
-        <h3>३. स्वच्छता</h3>
-    </div>
-    <div class="card-body">
-        
-        <!-- अ ) शालेय परिसर -->
-        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">अ ) शालेय परिसर :-</h4>
-        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
-            
-            <!-- रेडिओ बटन्स (तीनपैकी एक निवडण्यासाठी) -->
-            <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
-                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
-                    <input type="radio" name="schoolCampus" value="स्वच्छ" style="width: auto; margin-right: 4px;"> १) स्वच्छ
-                </label>
-                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
-                    <input type="radio" name="schoolCampus" value="अस्वच्छ" style="width: auto; margin-right: 4px;"> २) अस्वच्छ
-                </label>
-                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
-                    <input type="radio" name="schoolCampus" value="सुशोभनाची आवश्यकता" style="width: auto; margin-right: 4px;"> ३) सुशोभनाची आवश्यकता
-                </label>
-            </div>
-
-            <!-- शेरा (मराठीत लिहिण्याची अट जोडली आहे) -->
-            <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
-                <label for="campusRemark" style="font-size: 13px;">शेरा :-</label>
-                <input type="text" id="campusRemark" name="campusRemark" 
-                       placeholder="येथे मराठीत शेरा लिहा..." 
-                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
-                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
-            </div>
-        </div>
-
-        <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ddd;">
-
-        <!-- ब ) विद्यार्थी वैयक्तिक स्वच्छता -->
-        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">ब ) विद्यार्थी वैयक्तिक स्वच्छता :-</h4>
-        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-            
-            <!-- चेकबॉक्स समूह (स्वतंत्र निवड) -->
-            <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
-                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
-                    <input type="checkbox" id="personalHygiene" name="personalHygiene" value="वैयक्तिक शारीरिक स्वच्छता" style="width: auto; margin-right: 4px;"> १) वैयक्तिक शारीरिक स्वच्छता
-                </label>
-                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
-                    <input type="checkbox" id="cleanUniform" name="cleanUniform" value="स्वच्छ गणवेश" style="width: auto; margin-right: 4px;"> २) स्वच्छ गणवेश
-                </label>
-            </div>
-
-            <!-- शेरा (मराठीत लिहिण्याची अट जोडली आहे) -->
-            <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
-                <label for="studentHygieneRemark" style="font-size: 13px;">शेरा :-</label>
-                <input type="text" id="studentHygieneRemark" name="studentHygieneRemark" 
-                       placeholder="येथे मराठीत शेरा लिहा..." 
-                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
-                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
-            </div>
+                    </div>
                 </div>
-        <!-- ४. वर्ग अध्यापन निरीक्षण (Card Box) -->
-<div class="card">
-    <div class="card-header">
-        <h3>४. वर्ग अध्यापन निरीक्षण :- (किमान १ वर्ग १ तासिका)</h3>
-    </div>
-    <div class="card-body">
-        
-        <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px;">
-            
-            <!-- १) इयत्ता (पहिली ते आठवी) -->
-            <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
-                <label for="stdSelect" style="font-size: 13px;">इयत्ता :-</label>
-                <select id="stdSelect" name="stdSelect" required>
-                    <option value="">-- निवड करा --</option>
-                    <option value="पहिली">पहिली</option>
-                    <option value="दुसरी">दुसरी</option>
-                    <option value="तिसरी">तिसरी</option>
-                    <option value="चौथी">चौथी</option>
-                    <option value="पाचवी">पाचवी</option>
-                    <option value="सहावी">सहावी</option>
-                    <option value="सातवी">सातवी</option>
-                    <option value="आठवी">आठवी</option>
-                </select>
-            </div>
 
-            <!-- २) तुकडी (अ, ब, क, ड, नाही) -->
-            <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
-                <label for="divSelect" style="font-size: 13px;">तुकडी :-</label>
-                <select id="divSelect" name="divSelect" required>
-                    <option value="">-- निवड करा --</option>
-                    <option value="अ">अ</option>
-                    <option value="ब">ब</option>
-                    <option value="क">क</option>
-                    <option value="ड">ड</option>
-                    <option value="नाही">नाही</option>
-                </select>
-            </div>
+                <!-- ३. स्वच्छता (Card Box) -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>३. स्वच्छता</h3>
+                    </div>
+                    <div class="card-body">
+                        
+                        <!-- अ ) शालेय परिसर -->
+                        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">अ ) शालेय परिसर :-</h4>
+                        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
+                            
+                            <!-- रेडिओ बटन्स -->
+                            <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
+                                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                                    <input type="radio" name="schoolCampus" value="स्वच्छ" style="width: auto; margin-right: 4px;"> १) स्वच्छ
+                                </label>
+                                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                                    <input type="radio" name="schoolCampus" value="अस्वच्छ" style="width: auto; margin-right: 4px;"> २) अस्वच्छ
+                                </label>
+                                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                                    <input type="radio" name="schoolCampus" value="सुशोभनाची आवश्यकता" style="width: auto; margin-right: 4px;"> ३) सुशोभनाची आवश्यकता
+                                </label>
+                            </div>
 
-            <!-- ३) शिक्षकाचे नाव (शाळा निवडल्यावर आपोआप नावे येतील) -->
-            <div class="form-group" style="flex: 2; min-width: 220px; margin-bottom: 0;">
-                <label for="teacherSelect" style="font-size: 13px;">शिक्षकाचे नाव :-</label>
-                <select id="teacherSelect" name="teacherSelect" required>
-                    <option value="">-- आधी शाळा निवडा --</option>
-                </select>
-            </div>
+                            <!-- शेरा -->
+                            <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
+                                <label for="campusRemark" style="font-size: 13px;">शेरा :-</label>
+                                <input type="text" id="campusRemark" name="campusRemark" 
+                                       placeholder="येथे मराठीत शेरा लिहा..." 
+                                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
+                                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
+                            </div>
+                        </div>
 
-        </div>
+                        <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ddd;">
 
-    </div>
-</div>
+                        <!-- ब ) विद्यार्थी वैयक्तिक स्वच्छता -->
+                        <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">ब ) विद्यार्थी वैयक्तिक स्वच्छता :-</h4>
+                        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                            
+                            <!-- चेकबॉक्स समूह -->
+                            <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
+                                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                                    <input type="checkbox" id="personalHygiene" name="personalHygiene" value="वैयक्तिक शारीरिक स्वच्छता" style="width: auto; margin-right: 4px;"> १) वैयक्तिक शारीरिक स्वच्छता
+                                </label>
+                                <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
+                                    <input type="checkbox" id="cleanUniform" name="cleanUniform" value="स्वच्छ गणवेश" style="width: auto; margin-right: 4px;"> २) स्वच्छ गणवेश
+                                </label>
+                            </div>
+
+                            <!-- शेरा -->
+                            <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
+                                <label for="studentHygieneRemark" style="font-size: 13px;">शेरा :-</label>
+                                <input type="text" id="studentHygieneRemark" name="studentHygieneRemark" 
+                                       placeholder="येथे मराठीत शेरा लिहा..." 
+                                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
+                                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ४. वर्ग अध्यापन निरीक्षण (Card Box) -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>४. वर्ग अध्यापन निरीक्षण :- (किमान १ वर्ग १ तासिका)</h3>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px;">
+                            
+                            <!-- १) इयत्ता -->
+                            <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
+                                <label for="stdSelect" style="font-size: 13px;">इयत्ता :-</label>
+                                <select id="stdSelect" name="stdSelect" required>
+                                    <option value="">-- निवड करा --</option>
+                                    <option value="पहिली">पहिली</option>
+                                    <option value="दुसरी">दुसरी</option>
+                                    <option value="तिसरी">तिसरी</option>
+                                    <option value="चौथी">चौथी</option>
+                                    <option value="पाचवी">पाचवी</option>
+                                    <option value="सहावी">सहावी</option>
+                                    <option value="सातवी">सातवी</option>
+                                    <option value="आठवी">आठवी</option>
+                                </select>
+                            </div>
+
+                            <!-- २) तुकडी -->
+                            <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
+                                <label for="divSelect" style="font-size: 13px;">तुकडी :-</label>
+                                <select id="divSelect" name="divSelect" required>
+                                    <option value="">-- निवड करा --</option>
+                                    <option value="अ">अ</option>
+                                    <option value="ब">ब</option>
+                                    <option value="क">क</option>
+                                    <option value="ड">ड</option>
+                                    <option value="नाही">नाही</option>
+                                </select>
+                            </div>
+
+                            <!-- ३) शिक्षकाचे नाव -->
+                            <div class="form-group" style="flex: 2; min-width: 220px; margin-bottom: 0;">
+                                <label for="teacherSelect" style="font-size: 13px;">शिक्षकाचे नाव :-</label>
+                                <select id="teacherSelect" name="teacherSelect" required>
+                                    <option value="">-- आधी शाळा निवडा --</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
                 <!-- बटन्स (Print/PDF आणि Submit) -->
                 <div class="button-group no-print" style="margin-top: 20px; display: flex; gap: 10px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
@@ -347,56 +355,53 @@
 
     <!-- JavaScript code -->
     <script>
+        // १. सर्व शाळांतील शिक्षकांची नावे
+        const schoolTeachers = {
+            "जि.प.कें.प्रा.शाळा कन्या नागापूर": ["श्री. बी. डी. राठोड", "श्री.एस.एम.गंगणे"],
+            "जि.प.मा.शाळा नागापूर": ["श्री. ए. बी. गायकवाड","श्रीमती आर बी आडगावकर", "श्रीमती सी एम काजळे", "श्रीमती एस व्ही कराड", "श्री डी एम दराडे", "श्रीमती एस.बी.मात्रे", "श्री बी.डी.पुपुलवाड"],
+            "जि.प.प्रा.शाळा डाबी": ["श्री.एम.आर.फड", "श्री.एन.एस.जातकर", "श्री.ए.आर.नेहरकर", "श्री.पी.पी.आंधळे", "श्री.जी.एम.दहिवाडे","श्रीमती एस.आर.गुरले"],
+            "जि.प.प्रा.शाळा डाबी तांडा": ["श्री. एस.जी.फड","श्रीमती बी.बी.रापतवार"],
+            "जि.प.प्रा.शाळा वानटाकळी": ["श्री.आर.बी.जोशी", "श्री एस.आय.गड्डापोड", "श्री.एस.जे.मुकडे", "श्री एस.एम.गित्ते", "श्री बी.एम.जाधव", "श्रीमती एस.एन.कल्याणे"],
+            "जि.प.प्रा.शाळा वानटाकळी तांडा": ["श्री. एम.एन.जाधव", "श्री.व्ही.एम.गायकवाड"],
+            "जि.प.प्रा.शाळा एकबाली तांडा": ["श्री. के. बी. माडजे", "श्रीमती एस.यु.चाटे "],
+            "जि.प.प्रा.शाळा दौनापुर तांडा": ["श्रीमती एस.के.लाड"],
+            "जि.प.प्रा.शाळा दौनापूर": ["श्री.आर.टी.मंत्रे","श्री एम.डी.कळसकर", "श्री सी.टी.मुंडे", "श्री डी.एम.गाडेकर", "श्री.पी.के.रेवलकर", "श्री एम.ए.आंधळे", "श्रीमती आर.डी.आलझेंडे", "श्रीमती आर.एन.जाधव"],
+            "जि.प.प्रा.शाळा लिंबूटा तांडा": ["श्री. एम.बी.बडगिरे", "श्री.पी.व्ही.काळेवाड"],
+            "जि.प.प्रा.शाळा बहादुरवाडी": ["श्रीमती चिद्दरवार ए.डी", "श्रीमती एम.एस.माले"],
+            "संत तुकाराम प्राथमिक विद्यालय नागापूर": ["श्री.एन.पी.मुंडे"],
+            "रमाबाई प्राथमिक शाळा नागापूर": ["श्री वाय पी तोंडारे", "श्रीमती एस एस बनसोडे", "श्री के टी भुसे", "श्री एन.जी. कानडे", "श्रीमती एस.एस.बचुटे", "श्री एस.जी.बनसोडे", "टी.ए.कांबळे"],
+            "बालाघाट विद्यालय दौनापूर": ["श्री. एम. व्ही. कराड","श्रीमती पी टी कपाळे", "श्री आर एस नागरगोजे", "श्री पी.एस उघडे", "श्री बी.डी.दासूद"]
+        };
+
         // आजची तारीख बाय-डिफॉल्ट सेट करणे
         document.getElementById('visitDate').valueAsDate = new Date();
 
-        // शाळा निवडल्यावर ऑटो-अपडेट
-       // १. सर्व शाळांतील शिक्षकांची नावे
-const schoolTeachers = {
-    "जि.प.कें.प्रा.शाळा कन्या नागापूर": ["श्री. बी. डी. राठोड", "श्री.एस.एम.गंगणे"],
-    "जि.प.मा.शाळा नागापूर": ["श्री. ए. बी. गायकवाड","श्रीमती आर बी आडगावकर", "श्रीमती सी एम काजळे", "श्रीमती एस व्ही कराड", "श्री डी एम दराडे", "श्रीमती एस.बी.मात्रे", "श्री बी.डी.पुपुलवाड"],
-    "जि.प.प्रा.शाळा डाबी": ["श्री.एम.आर.फड", "श्री.एन.एस.जातकर", "श्री.ए.आर.नेहरकर", "श्री.पी.पी.आंधळे", "श्री.जी.एम.दहिवाडे","श्रीमती एस.आर.गुरले"],
-    "जि.प.प्रा.शाळा डाबी तांडा": ["श्री. एस.जी.फड","श्रीमती बी.बी.रापतवार"],
-    "जि.प.प्रा.शाळा वानटाकळी": ["श्री.आर.बी.जोशी", "श्री एस.आय.गड्डापोड", "श्री.एस.जे.मुकडे", "श्री एस.एम.गित्ते", "श्री बी.एम.जाधव", "श्रीमती एस.एन.कल्याणे"],
-    "जि.प.प्रा.शाळा वानटाकळी तांडा": ["श्री. एम.एन.जाधव", "श्री.व्ही.एम.गायकवाड"],
-    "जि.प.प्रा.शाळा एकबाली तांडा": ["श्री. के. बी. माडजे", "श्रीमती एस.यु.चाटे "],
-    "जि.प.प्रा.शाळा दौनापुर तांडा": ["श्रीमती एस.के.लाड"],
-    "जि.प.प्रा.शाळा दौनापूर": ["श्री.आर.टी.मंत्रे","श्री एम.डी.कळसकर", "श्री सी.टी.मुंडे", "श्री डी.एम.गाडेकर", "श्री.पी.के.रेवलकर", "श्री एम.ए.आंधळे", "श्रीमती आर.डी.आलझेंडे", "श्रीमती आर.एन.जाधव"],
-    "जि.प.प्रा.शाळा लिंबूटा तांडा": ["श्री. एम.बी.बडगिरे", "श्री.पी.व्ही.काळेवाड"],
-    "जि.प.प्रा.शाळा बहादुरवाडी": ["श्रीमती चिद्दरवार ए.डी", "श्रीमती एम.एस.माले"],
-    "संत तुकाराम प्राथमिक विद्यालय नागापूर": ["श्री.एन.पी.मुंडे", ],
-    "रमाबाई प्राथमिक शाळा नागापूर": ["श्री वाय पी तोंडारे", "श्रीमती एस एस बनसोडे", "श्री के टी भुसे", "श्री एन.जी. कानडे", "श्रीमती एस.एस.बचुटे", "श्री एस.जी.बनसोडे", "टी.ए.कांबळे"]
-    "बालाघाट विद्यालय दौनापूर": ["श्री. एम. व्ही. कराड","श्रीमती पी टी कपाळे", "श्री आर एस नागरगोजे", "श्री पी.एस उघडे", "श्री बी.डी.दासूद"]
-};
+        // शाळा निवडल्यावर ऑटो-अपडेट (UDISE, HM आणि शिक्षकांची लिस्ट)
+        function updateSchoolDetails() {
+            const selectElement = document.getElementById('schoolName');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const selectedSchool = selectElement.value;
+            
+            // UDISE आणि HM अपडेट
+            document.getElementById('udiseCode').value = selectedOption.getAttribute('data-udise') || '';
+            document.getElementById('headmasterName').value = selectedOption.getAttribute('data-hm') || '';
 
-// आजची तारीख बाय-डिफॉल्ट सेट करणे
-document.getElementById('visitDate').valueAsDate = new Date();
+            // शिक्षकांची नावे अपडेट
+            const teacherSelect = document.getElementById('teacherSelect');
+            if (teacherSelect) {
+                teacherSelect.innerHTML = '<option value="">-- शिक्षक निवडा --</option>';
 
-// शाळा निवडल्यावर ऑटो-अपडेट (UDISE, HM आणि शिक्षकांची लिस्ट)
-function updateSchoolDetails() {
-    const selectElement = document.getElementById('schoolName');
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    const selectedSchool = selectElement.value;
-    
-    // UDISE आणि HM अपडेट
-    document.getElementById('udiseCode').value = selectedOption.getAttribute('data-udise') || '';
-    document.getElementById('headmasterName').value = selectedOption.getAttribute('data-hm') || '';
-
-    // शिक्षकांची नावे अपडेट
-    const teacherSelect = document.getElementById('teacherSelect');
-    if (teacherSelect) {
-        teacherSelect.innerHTML = '<option value="">-- शिक्षक निवडा --</option>';
-
-        if (selectedSchool && schoolTeachers[selectedSchool]) {
-            schoolTeachers[selectedSchool].forEach(function(teacher) {
-                const option = document.createElement('option');
-                option.value = teacher;
-                option.textContent = teacher;
-                teacherSelect.appendChild(option);
-            });
+                if (selectedSchool && schoolTeachers[selectedSchool]) {
+                    schoolTeachers[selectedSchool].forEach(function(teacher) {
+                        const option = document.createElement('option');
+                        option.value = teacher;
+                        option.textContent = teacher;
+                        teacherSelect.appendChild(option);
+                    });
+                }
+            }
         }
-    }
-}
+
         // PDF जनरेट करताना प्लेसहोल्डर लपवणारे अचूक फंक्शन
         function generatePDF() {
             window.scrollTo(0, 0);
