@@ -67,25 +67,28 @@
             font-size: 14px;
         }
 
-        /* -------------------------------------------------- */
-        /* 🚨 पीडीएफ / प्रिंट काढताना प्लेसहोल्डर (सूचना) लपवणे */
-        /* -------------------------------------------------- */
-        @media print {
-            ::placeholder {
-                color: transparent !important;
-            }
-            ::-webkit-input-placeholder {
-                color: transparent !important;
-            }
-            ::-moz-placeholder {
-                color: transparent !important;
-            }
-            :-ms-input-placeholder {
-                color: transparent !important;
-            }
+        /* PDF मोडेमधे मूळ date इनपुट लपवून टेक्स्ट इनपुट दाखवणे */
+        .pdf-mode .no-pdf-date {
+            display: none !important;
+        }
+        .pdf-date-display {
+            display: none;
+        }
+        .pdf-mode .pdf-date-display {
+            display: block !important;
         }
 
-        /* html2pdf साठी खास वर्ग (PDF मोड सुरु असताना सूचना लपवणे) */
+        /* 🚨 पीडीएफ / प्रिंट काढताना प्लेसहोल्डर (सूचना) लपवणे */
+        @media print {
+            ::placeholder { color: transparent !important; }
+            ::-webkit-input-placeholder { color: transparent !important; }
+            ::-moz-placeholder { color: transparent !important; }
+            :-ms-input-placeholder { color: transparent !important; }
+            
+            .no-pdf-date { display: none !important; }
+            .pdf-date-display { display: block !important; }
+        }
+
         .pdf-mode ::placeholder {
             color: transparent !important;
         }
@@ -114,55 +117,54 @@
                     </div>
                     <div class="card-body">
                         
-                        <!-- ओळ १: शाळेचे नाव आणि यू-डायस कोड एकाच ओळीत -->
+                        <!-- ओळ १: शाळेचे नाव आणि यू-डायस कोड -->
                         <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
-                            <!-- १) शाळेचे नाव -->
                             <div class="form-group" style="flex: 2; margin-bottom: 0;">
                                 <label for="schoolName">शाळेचे नाव निवडा:</label>
                                 <select id="schoolName" name="schoolName" required onchange="updateSchoolDetails()">
                                     <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
-                                    <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27280100101" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
-                                    <option value="जि.प.मा.शाळा नागापूर" data-udise="27280100102" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
-                                    <option value="जि.प.प्रा.शाळा डाबी" data-udise="27280100201" data-hm="सौ.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
-                                    <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27280100202" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27280100301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
-                                    <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27280100302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
+                                    <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
+                                    <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
+                                    <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101" data-hm="सौ.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
+                                    <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27270804701" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27270804301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
+                                    <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27270804302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
                                     <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27280100401" data-hm="श्री.के.बी.माडजे">जि.प.प्रा.शाळा एकबाली तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27280100501" data-hm="श्रीमती एस.के.लाड">जि.प.प्रा.शाळा दौनापुर तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27280100502" data-hm="श्री.आर.टी.मंत्रे">जि.प.प्रा.शाळा दौनापूर</option>
-                                    <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27280100601" data-hm="श्री.एम.बी.बडगिरे">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27280100701" data-hm="श्रीमती चिद्दरवार ए.डी">जि.प.प्रा.शाळा बहादुरवाडी</option>
+                                    <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27270804601" data-hm="श्रीमती एस.के.लाड">जि.प.प्रा.शाळा दौनापुर तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27270804201" data-hm="श्री.आर.टी.मंत्रे">जि.प.प्रा.शाळा दौनापूर</option>
+                                    <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27270804801" data-hm="श्री.एम.बी.बडगिरे">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27270804401" data-hm="श्रीमती चिद्दरवार ए.डी">जि.प.प्रा.शाळा बहादुरवाडी</option>
                                     <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27280100103" data-hm="श्री.एन.पी.मुंडे">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
                                     <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27280100104" data-hm="श्रीमती एस.एस.बनसोडे">रमाबाई प्राथमिक शाळा नागापूर</option>
                                     <option value="बालाघाट विद्यालय दौनापूर" data-udise="27280100503" data-hm="श्री.एम.व्ही.कराड">बालाघाट विद्यालय दौनापूर</option>
                                 </select>
                             </div>
 
-                            <!-- २) यु-डायस कोड -->
                             <div class="form-group" style="flex: 1; margin-bottom: 0;">
                                 <label for="udiseCode">शाळेचा यु-डायस क्रमांक:</label>
                                 <input type="text" id="udiseCode" name="udiseCode" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
                             </div>
                         </div>
 
-                        <!-- ओळ २: मुख्याध्यापकांचे नाव आणि भेटीचा दिनांक एकाच ओळीत -->
+                        <!-- ओळ २: मुख्याध्यापकांचे नाव आणि भेटीचा दिनांक -->
                         <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
-                            <!-- ३) मुख्याध्यापकांचे नाव -->
                             <div class="form-group" style="flex: 2; margin-bottom: 0;">
                                 <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
                                 <input type="text" id="headmasterName" name="headmasterName" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
                             </div>
 
-                            <!-- ४) भेटीचा दिनांक -->
+                            <!-- भेटीचा दिनांक (DD/MM/YYYY फॉरमॅटसह) -->
                             <div class="form-group" style="flex: 1; margin-bottom: 0;">
                                 <label for="visitDate">भेटीचा दिनांक:</label>
-                                <input type="date" id="visitDate" name="visitDate" required>
+                                <!-- नेहमीचे Date Picker (इनपुट करताना) -->
+                                <input type="date" id="visitDate" name="visitDate" class="no-pdf-date" required onchange="formatDateForPrint()">
+                                <!-- PDF/प्रिंट साठी सुटसुटीत DD/MM/YYYY फॉरमॅट -->
+                                <input type="text" id="visitDateFormatted" class="pdf-date-display" readonly style="background-color: #ffffff;">
                             </div>
                         </div>
 
                         <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
 
-                        <!-- ५) भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम -->
                         <div class="form-group" style="margin-bottom: 0;">
                             <label>भेट देणाऱ्या अधिकाऱ्याचे नाव व पदनाम :-</label>
                             <div style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 6px 10px; border-radius: 4px; font-weight: normal; line-height: 1.4; color: #333; font-size: 13px;">
@@ -173,14 +175,12 @@
                     </div>
                 </div>
 
-                <!-- २. विद्यार्थी व शिक्षक उपस्थिती (Card Box) -->
+                <!-- २. विद्यार्थी व शिक्षक उपस्थिती -->
                 <div class="card">
                     <div class="card-header">
                         <h3>२. विद्यार्थी व शिक्षक उपस्थिती</h3>
                     </div>
                     <div class="card-body">
-                        
-                        <!-- अ ) विद्यार्थी उपस्थिती :- (एकाच ओळीत समोरासमोर) -->
                         <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">अ ) विद्यार्थी उपस्थिती :-</h4>
                         
                         <div style="display: flex; gap: 10px; align-items: flex-end; margin-bottom: 12px;">
@@ -202,7 +202,6 @@
 
                         <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ddd;">
 
-                        <!-- ब ) शिक्षक उपस्थिती :- (एकाच ओळीत समोरासमोर) -->
                         <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">ब ) शिक्षक उपस्थिती :-</h4>
 
                         <div style="display: flex; gap: 10px; align-items: flex-end;">
@@ -229,18 +228,14 @@
                     </div>
                 </div>
 
-                <!-- ३. स्वच्छता (Card Box) -->
+                <!-- ३. स्वच्छता -->
                 <div class="card">
                     <div class="card-header">
                         <h3>३. स्वच्छता</h3>
                     </div>
                     <div class="card-body">
-                        
-                        <!-- अ ) शालेय परिसर -->
                         <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">अ ) शालेय परिसर :-</h4>
                         <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
-                            
-                            <!-- रेडिओ बटन्स -->
                             <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
                                 <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
                                     <input type="radio" name="schoolCampus" value="स्वच्छ" style="width: auto; margin-right: 4px;"> १) स्वच्छ
@@ -253,23 +248,16 @@
                                 </label>
                             </div>
 
-                            <!-- शेरा -->
                             <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
                                 <label for="campusRemark" style="font-size: 13px;">शेरा :-</label>
-                                <input type="text" id="campusRemark" name="campusRemark" 
-                                       placeholder="येथे मराठीत शेरा लिहा..." 
-                                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
-                                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
+                                <input type="text" id="campusRemark" name="campusRemark" placeholder="येथे मराठीत शेरा लिहा...">
                             </div>
                         </div>
 
                         <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ddd;">
 
-                        <!-- ब ) विद्यार्थी वैयक्तिक स्वच्छता -->
                         <h4 style="margin: 2px 0 8px 0; color: #2c3e50; font-size: 14px;">ब ) विद्यार्थी वैयक्तिक स्वच्छता :-</h4>
                         <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-                            
-                            <!-- चेकबॉक्स समूह -->
                             <div style="display: flex; gap: 15px; align-items: center; background: #f9f9f9; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
                                 <label style="font-weight: normal; margin-bottom: 0; cursor: pointer; font-size: 13px;">
                                     <input type="checkbox" id="personalHygiene" name="personalHygiene" value="वैयक्तिक शारीरिक स्वच्छता" style="width: auto; margin-right: 4px;"> १) वैयक्तिक शारीरिक स्वच्छता
@@ -279,29 +267,22 @@
                                 </label>
                             </div>
 
-                            <!-- शेरा -->
                             <div class="form-group" style="flex: 1; margin-bottom: 0; min-width: 200px;">
                                 <label for="studentHygieneRemark" style="font-size: 13px;">शेरा :-</label>
-                                <input type="text" id="studentHygieneRemark" name="studentHygieneRemark" 
-                                       placeholder="येथे मराठीत शेरा लिहा..." 
-                                       pattern="^[\u0900-\u097F\s0-9p{P}]+$" 
-                                       title="कृपया शेरा फक्त मराठीत (देवनागरी लिपीत) टाका.">
+                                <input type="text" id="studentHygieneRemark" name="studentHygieneRemark" placeholder="येथे मराठीत शेरा लिहा...">
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- ४. वर्ग अध्यापन निरीक्षण (Card Box) -->
+                <!-- ४. वर्ग अध्यापन निरीक्षण -->
                 <div class="card">
                     <div class="card-header">
                         <h3>४. वर्ग अध्यापन निरीक्षण :- (किमान १ वर्ग १ तासिका)</h3>
                     </div>
                     <div class="card-body">
-                        
                         <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px;">
-                            
-                            <!-- १) इयत्ता -->
                             <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
                                 <label for="stdSelect" style="font-size: 13px;">इयत्ता :-</label>
                                 <select id="stdSelect" name="stdSelect" required>
@@ -317,7 +298,6 @@
                                 </select>
                             </div>
 
-                            <!-- २) तुकडी -->
                             <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
                                 <label for="divSelect" style="font-size: 13px;">तुकडी :-</label>
                                 <select id="divSelect" name="divSelect" required>
@@ -330,20 +310,17 @@
                                 </select>
                             </div>
 
-                            <!-- ३) शिक्षकाचे नाव -->
                             <div class="form-group" style="flex: 2; min-width: 220px; margin-bottom: 0;">
                                 <label for="teacherSelect" style="font-size: 13px;">शिक्षकाचे नाव :-</label>
                                 <select id="teacherSelect" name="teacherSelect" required>
                                     <option value="">-- आधी शाळा निवडा --</option>
                                 </select>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
 
-                <!-- बटन्स (Print/PDF आणि Submit) -->
+                <!-- बटन्स -->
                 <div class="button-group no-print" style="margin-top: 20px; display: flex; gap: 10px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
                     <button type="submit" class="btn btn-submit">☁️ Drive वर सेव्ह करा</button>
@@ -355,7 +332,6 @@
 
     <!-- JavaScript code -->
     <script>
-        // १. सर्व शाळांतील शिक्षकांची नावे
         const schoolTeachers = {
             "जि.प.कें.प्रा.शाळा कन्या नागापूर": ["श्री. बी. डी. राठोड", "श्री.एस.एम.गंगणे"],
             "जि.प.मा.शाळा नागापूर": ["श्री. ए. बी. गायकवाड","श्रीमती आर बी आडगावकर", "श्रीमती सी एम काजळे", "श्रीमती एस व्ही कराड", "श्री डी एम दराडे", "श्रीमती एस.बी.मात्रे", "श्री बी.डी.पुपुलवाड"],
@@ -373,20 +349,31 @@
             "बालाघाट विद्यालय दौनापूर": ["श्री. एम. व्ही. कराड","श्रीमती पी टी कपाळे", "श्री आर एस नागरगोजे", "श्री पी.एस उघडे", "श्री बी.डी.दासूद"]
         };
 
-        // आजची तारीख बाय-डिफॉल्ट सेट करणे
-        document.getElementById('visitDate').valueAsDate = new Date();
+        // आजची तारीख बाय-डिफॉल्ट सेट करणे व DD/MM/YYYY फॉरमॅट तयार करणे
+        const dateInput = document.getElementById('visitDate');
+        dateInput.valueAsDate = new Date();
+        formatDateForPrint();
 
-        // शाळा निवडल्यावर ऑटो-अपडेट (UDISE, HM आणि शिक्षकांची लिस्ट)
+        function formatDateForPrint() {
+            const val = dateInput.value;
+            if (val) {
+                const parts = val.split('-');
+                if(parts.length === 3) {
+                    // YYYY-MM-DD -> DD/MM/YYYY
+                    document.getElementById('visitDateFormatted').value = ${parts[2]}/${parts[1]}/${parts[0]};
+                }
+            }
+        }
+
+        // शाळा निवडल्यावर UDISE, HM व शिक्षक अपडेट करणे
         function updateSchoolDetails() {
             const selectElement = document.getElementById('schoolName');
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const selectedSchool = selectElement.value;
             
-            // UDISE आणि HM अपडेट
             document.getElementById('udiseCode').value = selectedOption.getAttribute('data-udise') || '';
             document.getElementById('headmasterName').value = selectedOption.getAttribute('data-hm') || '';
 
-            // शिक्षकांची नावे अपडेट
             const teacherSelect = document.getElementById('teacherSelect');
             if (teacherSelect) {
                 teacherSelect.innerHTML = '<option value="">-- शिक्षक निवडा --</option>';
@@ -402,8 +389,9 @@
             }
         }
 
-        // PDF जनरेट करताना प्लेसहोल्डर लपवणारे अचूक फंक्शन
+        // PDF जनरेट करणे
         function generatePDF() {
+            formatDateForPrint();
             window.scrollTo(0, 0);
 
             const element = document.getElementById('formToPrint');
