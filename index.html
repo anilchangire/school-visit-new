@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>शैक्षणिक शाळा भेट प्रपत्र</title>
-    <!-- CSS File Link -->
-    <link rel="stylesheet" href="style.css">
     <!-- html2pdf Library for PDF Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        /* सर्वसाधारण प्रोफेशनल डिझाईन */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f7f6;
@@ -67,7 +64,6 @@
             font-size: 14px;
         }
 
-        /* PDF मोडेमधे मूळ date इनपुट लपवून टेक्स्ट इनपुट दाखवणे */
         .pdf-mode .no-pdf-date {
             display: none !important;
         }
@@ -78,7 +74,6 @@
             display: block !important;
         }
 
-        /* 🚨 पीडीएफ / प्रिंट काढताना प्लेसहोल्डर (सूचना) लपवणे */
         @media print {
             ::placeholder { color: transparent !important; }
             ::-webkit-input-placeholder { color: transparent !important; }
@@ -100,24 +95,21 @@
 <body>
 
     <div class="main-wrapper">
-        <!-- PDF मध्ये येणारा मुख्य भाग -->
         <div id="formToPrint" class="form-container">
             
-            <!-- मुख्य शीर्षक -->
             <header class="header-section">
                 <h1 style="margin: 0 0 15px 0; text-align: center; color: #1a5276; font-size: 22px;">शैक्षणिक शाळा भेट प्रपत्र</h1>
             </header>
 
             <form id="schoolVisitForm">
 
-                <!-- १. सर्वसाधारण व शाळेची माहिती (Card Box) -->
+                <!-- १. सर्वसाधारण व शाळेची माहिती -->
                 <div class="card">
                     <div class="card-header">
                         <h3>१. सर्वसाधारण व शाळेची माहिती</h3>
                     </div>
                     <div class="card-body">
                         
-                        <!-- ओळ १: शाळेचे नाव आणि यू-डायस कोड -->
                         <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
                             <div class="form-group" style="flex: 2; margin-bottom: 0;">
                                 <label for="schoolName">शाळेचे नाव निवडा:</label>
@@ -146,19 +138,15 @@
                             </div>
                         </div>
 
-                        <!-- ओळ २: मुख्याध्यापकांचे नाव आणि भेटीचा दिनांक -->
                         <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
                             <div class="form-group" style="flex: 2; margin-bottom: 0;">
                                 <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
                                 <input type="text" id="headmasterName" name="headmasterName" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
                             </div>
 
-                            <!-- भेटीचा दिनांक (DD/MM/YYYY फॉरमॅटसह) -->
                             <div class="form-group" style="flex: 1; margin-bottom: 0;">
                                 <label for="visitDate">भेटीचा दिनांक:</label>
-                                <!-- नेहमीचे Date Picker (इनपुट करताना) -->
                                 <input type="date" id="visitDate" name="visitDate" class="no-pdf-date" required onchange="formatDateForPrint()">
-                                <!-- PDF/प्रिंट साठी सुटसुटीत DD/MM/YYYY फॉरमॅट -->
                                 <input type="text" id="visitDateFormatted" class="pdf-date-display" readonly style="background-color: #ffffff;">
                             </div>
                         </div>
@@ -349,7 +337,6 @@
             "बालाघाट विद्यालय दौनापूर": ["श्री. एम. व्ही. कराड","श्रीमती पी टी कपाळे", "श्री आर एस नागरगोजे", "श्री पी.एस उघडे", "श्री बी.डी.दासूद"]
         };
 
-        // आजची तारीख बाय-डिफॉल्ट सेट करणे व DD/MM/YYYY फॉरमॅट तयार करणे
         const dateInput = document.getElementById('visitDate');
         dateInput.valueAsDate = new Date();
         formatDateForPrint();
@@ -359,13 +346,12 @@
             if (val) {
                 const parts = val.split('-');
                 if(parts.length === 3) {
-                    // YYYY-MM-DD -> DD/MM/YYYY
+                    // 🟢 दुरुस्त केलेली ओळ (बॅकटिक्स जोडले आहेत):
                     document.getElementById('visitDateFormatted').value = ${parts[2]}/${parts[1]}/${parts[0]};
                 }
             }
         }
 
-        // शाळा निवडल्यावर UDISE, HM व शिक्षक अपडेट करणे
         function updateSchoolDetails() {
             const selectElement = document.getElementById('schoolName');
             const selectedOption = selectElement.options[selectElement.selectedIndex];
@@ -389,7 +375,6 @@
             }
         }
 
-        // PDF जनरेट करणे
         function generatePDF() {
             formatDateForPrint();
             window.scrollTo(0, 0);
