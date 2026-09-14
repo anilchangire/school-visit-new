@@ -113,7 +113,7 @@
                         <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
                             <div class="form-group" style="flex: 2; margin-bottom: 0;">
                                 <label for="schoolName">शाळेचे नाव निवडा:</label>
-                                <select id="schoolName" name="schoolName" required onchange="updateSchoolDetails()">
+                                <select id="schoolName" name="schoolName" required>
                                     <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
                                     <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
                                     <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
@@ -146,7 +146,7 @@
 
                             <div class="form-group" style="flex: 1; margin-bottom: 0;">
                                 <label for="visitDate">भेटीचा दिनांक:</label>
-                                <input type="date" id="visitDate" name="visitDate" class="no-pdf-date" required onchange="formatDateForPrint()">
+                                <input type="date" id="visitDate" name="visitDate" class="no-pdf-date" required>
                                 <input type="text" id="visitDateFormatted" class="pdf-date-display" readonly style="background-color: #ffffff;">
                             </div>
                         </div>
@@ -337,17 +337,28 @@
             "बालाघाट विद्यालय दौनापूर": ["श्री. एम. व्ही. कराड","श्रीमती पी टी कपाळे", "श्री आर एस नागरगोजे", "श्री पी.एस उघडे", "श्री बी.डी.दासूद"]
         };
 
-        const dateInput = document.getElementById('visitDate');
-        dateInput.valueAsDate = new Date();
-        formatDateForPrint();
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('visitDate');
+            if (dateInput) {
+                dateInput.valueAsDate = new Date();
+                formatDateForPrint();
+                dateInput.addEventListener('change', formatDateForPrint);
+            }
+
+            const schoolSelect = document.getElementById('schoolName');
+            if (schoolSelect) {
+                schoolSelect.addEventListener('change', updateSchoolDetails);
+            }
+        });
 
         function formatDateForPrint() {
+            const dateInput = document.getElementById('visitDate');
+            if (!dateInput) return;
             const val = dateInput.value;
             if (val) {
                 const parts = val.split('-');
                 if(parts.length === 3) {
-                    // Backticks (`) चा वापर करून दुरुस्त केलेले विधान:
-                    document.getElementById('visitDateFormatted').value = ${parts[2]}/${parts[1]}/${parts[0]};
+                    document.getElementById('visitDateFormatted').value = parts[2] + '/' + parts[1] + '/' + parts[0];
                 }
             }
         }
@@ -357,9 +368,14 @@
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const selectedSchool = selectElement.value;
             
-            document.getElementById('udiseCode').value = selectedOption.getAttribute('data-udise') || '';
-            document.getElementById('headmasterName').value = selectedOption.getAttribute('data-hm') || '';
+            // UDISE आणि Headmaster भरण्याची क्रिया
+            const udiseInput = document.getElementById('udiseCode');
+            const hmInput = document.getElementById('headmasterName');
+            
+            if (udiseInput) udiseInput.value = selectedOption.getAttribute('data-udise') || '';
+            if (hmInput) hmInput.value = selectedOption.getAttribute('data-hm') || '';
 
+            // शिक्षक यादी अपडेट करण्याची क्रिया
             const teacherSelect = document.getElementById('teacherSelect');
             if (teacherSelect) {
                 teacherSelect.innerHTML = '<option value="">-- शिक्षक निवडा --</option>';
