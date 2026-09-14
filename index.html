@@ -346,7 +346,83 @@
             </div>
 
         </div>
+<!-- ४. वर्ग अध्यापन निरीक्षण : अभिप्राय विभाग -->
+<div style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+    <h4 style="font-size: 15px; color: #333; margin-bottom: 12px; font-weight: bold;">
+        पाठ निरीक्षणाचे मुद्दे व अभिप्राय :-
+    </h4>
 
+    <!-- १. विषयाची मांडणी -->
+    <div class="form-group" style="margin-bottom: 12px;">
+        <label for="feedback1_select" style="font-size: 13px; font-weight: 600;">१. विषयाची मांडणी :-</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+            <select id="feedback1_select" name="feedback1_select" style="flex: 1; min-width: 250px;">
+                <option value="">-- अभिप्राय निवडा --</option>
+                <option value="उत्कृष्ट">उत्कृष्ट: सोप्याकडून कठीणतेकडे नियोजनबद्ध व तार्किक मांडणी केली.</option>
+                <option value="उत्तम">उत्तम: संकल्पना मांडणी योग्य असून वेळेचे नियोजन चांगले होते.</option>
+                <option value="सरासरी">सरासरी: मांडणी सर्वसाधारण असून संकल्पनांच्या क्रमिक नियोजनात सुधारणा आवश्यक.</option>
+            </select>
+            <input type="text" id="feedback1_custom" name="feedback1_custom" placeholder="किंवा इतर स्वतंत्र अभिप्राय टाईप करा..." style="flex: 1; min-width: 250px;">
+        </div>
+    </div>
+
+    <!-- २. शैक्षणिक साहित्याचा वापर -->
+    <div class="form-group" style="margin-bottom: 12px;">
+        <label for="feedback2_select" style="font-size: 13px; font-weight: 600;">२. शैक्षणिक साहित्याचा वापर :-</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+            <select id="feedback2_select" name="feedback2_select" style="flex: 1; min-width: 250px;">
+                <option value="">-- अभिप्राय निवडा --</option>
+                <option value="उत्कृष्ट">उत्कृष्ट: TLM/ICT चा योग्य वेळी आणि कृतीयुक्त अत्यंत प्रभावी वापर केला.</option>
+                <option value="उत्तम">उत्तम: पाठाच्या गरजेनुसार सुसंगत साहित्याचा योग्य वापर केला.</option>
+                <option value="सरासरी">सरासरी: साहित्याचा वापर केवळ दर्शवण्यापुरता न ठेवता स्पष्टीकरणाशी जोडावा.</option>
+            </select>
+            <input type="text" id="feedback2_custom" name="feedback2_custom" placeholder="किंवा इतर स्वतंत्र अभिप्राय टाईप करा..." style="flex: 1; min-width: 250px;">
+        </div>
+    </div>
+
+    <!-- ३. उदाहरणे / दाखले यांचा वापर -->
+    <div class="form-group" style="margin-bottom: 12px;">
+        <label for="feedback3_select" style="font-size: 13px; font-weight: 600;">३. उदाहरणे / दाखले यांचा वापर :-</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+            <select id="feedback3_select" name="feedback3_select" style="flex: 1; min-width: 250px;">
+                <option value="">-- अभिप्राय निवडा --</option>
+                <option value="उत्कृष्ट">उत्कृष्ट: दैनंदिन जीवनातील व स्थानिक परिसराशी जोडलेली रंजक उदाहरणे दिली.</option>
+                <option value="उत्तम">उत्तम: पाठाशी सुसंबद्ध व सोपी उदाहरणे देऊन स्पष्टीकरण केले.</option>
+                <option value="सरासरी">सरासरी: केवळ पाठ्यपुस्तकातील उदाहरणांऐवजी व्यावहारिक दाखले वाढवावेत.</option>
+            </select>
+            <input type="text" id="feedback3_custom" name="feedback3_custom" placeholder="किंवा इतर स्वतंत्र अभिप्राय टाईप करा..." style="flex: 1; min-width: 250px;">
+        </div>
+    </div>
+
+    <!-- ४. प्रश्नोत्तरे / विद्यार्थी प्रतिसाद -->
+    <div class="form-group" style="margin-bottom: 12px;">
+        <label for="feedback4_select" style="font-size: 13px; font-weight: 600;">४. प्रश्नोत्तरे / विद्यार्थी प्रतिसाद :-</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+            <select id="feedback4_select" name="feedback4_select" style="flex: 1; min-width: 250px;">
+                <option value="">-- अभिप्राय निवडा --</option>
+                <option value="उत्कृष्ट">उत्कृष्ट: भयमुक्त वातावरणात विद्यार्थ्यांचा उत्स्फूर्त व तर्कशुद्ध प्रतिसाद मिळाला.</option>
+                <option value="उत्तम">उत्तम: बहुतांश विद्यार्थ्यांचा पाठातील सहभाग व प्रतिसाद चांगला राहिला.</option>
+                <option value="सरासरी">सरासरी: मोजक्या विद्यार्थ्यांऐवजी सर्व विद्यार्थ्यांना बोलण्याची संधी द्यावी.</option>
+            </select>
+            <input type="text" id="feedback4_custom" name="feedback4_custom" placeholder="किंवा इतर स्वतंत्र अभिप्राय टाईप करा..." style="flex: 1; min-width: 250px;">
+        </div>
+    </div>
+
+    <!-- ५. पाठाविषयी सर्वसाधारण अभिप्राय -->
+    <div class="form-group" style="margin-bottom: 0;">
+        <label for="feedback5_select" style="font-size: 13px; font-weight: 600;">५. सर्वसाधारण पाठाविषयी अभिप्राय :-</label>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+            <select id="feedback5_select" name="feedback5_select" style="flex: 1; min-width: 250px;">
+                <option value="">-- अभिप्राय निवडा --</option>
+                <option value="उत्कृष्ट">उत्कृष्ट: अध्ययन निष्पत्ती साध्य करणारे अत्यंत रंजक व फलदायी अध्यापन.</option>
+                <option value="उत्तम">उत्तम: सुटसुटीत नियोजन व चांगल्या समन्वयाने घेतलेली प्रभावी तासिका.</option>
+                <option value="सरासरी">सरासरी: अध्यापन उद्दिष्टानुसार योग्य; अधिक सराव व सहभागाची गरज.</option>
+            </select>
+            <input type="text" id="feedback5_custom" name="feedback5_custom" placeholder="किंवा इतर स्वतंत्र अभिप्राय टाईप करा..." style="flex: 1; min-width: 250px;">
+        </div>
+    </div>
+
+</div>
     </div>
 </div>
     </div>
