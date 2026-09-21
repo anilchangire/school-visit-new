@@ -581,16 +581,16 @@
             const schoolType = schoolTypeSelect.value;
             const container = document.getElementById('languageTablesContainer');
             
-            // १. प्रथम भाषा मराठी तक्ता
+            // १. प्रथम भाषा मराठी तक्ता (सुधारित हेडरसह)
             let marathiTable = `
                 <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
-                        <h4 style="font-size: 14px; color: #1a5276; margin: 0; font-weight: bold;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 13px; color: #1a5276; margin: 0; font-weight: bold; white-space: nowrap;">
                             १. प्रथम भाषा (मराठी) - क्षमता संपादणूक पडताळणी :-
                         </h4>
-                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
-                            <label for="marathiTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;">मराठी विषय शिक्षक :-</label>
-                            <select id="marathiTeacher" name="marathiTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
+                        <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            <label for="marathiTeacher" style="font-size: 12px; font-weight: bold; color: #2c3e50; white-space: nowrap;">मराठी विषय शिक्षक :-</label>
+                            <select id="marathiTeacher" name="marathiTeacher" class="teacher-dropdown" style="padding: 3px 6px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
                                 <option value="">-- आधी शाळा निवडा --</option>
                             </select>
                         </div>
