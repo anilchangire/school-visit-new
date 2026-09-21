@@ -310,8 +310,8 @@
                             </div>
 
                             <div class="form-group" style="flex: 2; min-width: 200px; margin-bottom: 0;">
-                                <label for="teacherSelect" style="font-size: 13px;">शिक्षकाचे नाव :-</label>
-                                <select id="teacherSelect" name="teacherSelect" required>
+                                <label for="teacherSelect" style="font-size: 13px;">विषय शिक्षकाचे नाव :-</label>
+                                <select id="teacherSelect" name="teacherSelect" class="teacher-dropdown" required>
                                     <option value="">-- आधी शाळा निवडा --</option>
                                 </select>
                             </div>
@@ -406,7 +406,7 @@
                     </div>
                     <div class="card-body">
                         
-                        <!-- रो १: इयत्ता, तुकडी, शिक्षक निवड -->
+                        <!-- रो १: इयत्ता आणि तुकडी निवड -->
                         <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px;">
                             <div class="form-group" style="flex: 1; min-width: 100px; margin-bottom: 0;">
                                 <label for="evalStdSelect" style="font-size: 13px;">इयत्ता :-</label>
@@ -434,13 +434,6 @@
                                     <option value="नाही">नाही</option>
                                 </select>
                             </div>
-
-                            <div class="form-group" style="flex: 2; min-width: 220px; margin-bottom: 0;">
-                                <label for="evalTeacherSelect" style="font-size: 13px;">शिक्षकाचे नाव :-</label>
-                                <select id="evalTeacherSelect" name="evalTeacherSelect" required>
-                                    <option value="">-- आधी शाळा निवडा --</option>
-                                </select>
-                            </div>
                         </div>
 
                         <!-- रो २: शाळेचा प्रकार निवड -->
@@ -456,7 +449,7 @@
                             </div>
                         </div>
 
-                        <!-- भाषा क्षमतेचे dynamic तक्ते -->
+                        <!-- भाषा क्षमतेचे dynamic तक्ते (विषयनिहाय स्वतंत्र शिक्षक निवडीसह) -->
                         <div id="languageTablesContainer"></div>
 
                     </div>
@@ -524,42 +517,37 @@
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const selectedSchool = selectElement.value;
             
-            // UDISE आणि Headmaster भरण्याची क्रिया
+            // UDISE आणि Headmaster भरणे
             const udiseInput = document.getElementById('udiseCode');
             const hmInput = document.getElementById('headmasterName');
             
             if (udiseInput) udiseInput.value = selectedOption.getAttribute('data-udise') || '';
             if (hmInput) hmInput.value = selectedOption.getAttribute('data-hm') || '';
 
-            // १. भाग ४ मधील शिक्षक ड्रॉप-डाऊन जोडणे
-            const teacherSelect = document.getElementById('teacherSelect');
-            // २. भाग ५ मधील शिक्षक ड्रॉप-डाऊन जोडणे
-            const evalTeacherSelect = document.getElementById('evalTeacherSelect');
+            // सर्व शिक्षक ड्रॉप-डाऊन शोधून ते अपडेट करणे
+            const teacherDropdowns = document.querySelectorAll('.teacher-dropdown');
 
-            if (teacherSelect) teacherSelect.innerHTML = '<option value="">-- शिक्षक निवडा --</option>';
-            if (evalTeacherSelect) evalTeacherSelect.innerHTML = '<option value="">-- शिक्षक निवडा --</option>';
+            teacherDropdowns.forEach(function(dropdown) {
+                dropdown.innerHTML = '';
+                if (selectedSchool && schoolTeachers[selectedSchool]) {
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = '-- शिक्षक निवडा --';
+                    dropdown.appendChild(defaultOption);
 
-            if (selectedSchool && schoolTeachers[selectedSchool]) {
-                schoolTeachers[selectedSchool].forEach(function(teacher) {
-                    // भाग ४ मधील ऑप्शन
-                    if (teacherSelect) {
-                        const option1 = document.createElement('option');
-                        option1.value = teacher;
-                        option1.textContent = teacher;
-                        teacherSelect.appendChild(option1);
-                    }
-                    // भाग ५ मधील ऑप्शन
-                    if (evalTeacherSelect) {
-                        const option2 = document.createElement('option');
-                        option2.value = teacher;
-                        option2.textContent = teacher;
-                        evalTeacherSelect.appendChild(option2);
-                    }
-                });
-            } else {
-                if (teacherSelect) teacherSelect.innerHTML = '<option value="">-- आधी शाळा निवडा --</option>';
-                if (evalTeacherSelect) evalTeacherSelect.innerHTML = '<option value="">-- आधी शाळा निवडा --</option>';
-            }
+                    schoolTeachers[selectedSchool].forEach(function(teacher) {
+                        const option = document.createElement('option');
+                        option.value = teacher;
+                        option.textContent = teacher;
+                        dropdown.appendChild(option);
+                    });
+                } else {
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = '-- आधी शाळा निवडा --';
+                    dropdown.appendChild(defaultOption);
+                }
+            });
         }
 
         function generatePDF() {
@@ -595,12 +583,20 @@
             
             // १. प्रथम भाषा मराठी तक्ता
             let marathiTable = `
-                <div style="margin-bottom: 20px;">
-                    <h4 style="font-size: 14px; color: #1a5276; margin-bottom: 8px; font-weight: bold;">
-                        १. प्रथम भाषा (मराठी) - क्षमता संपादणूक पडताळणी :-
-                    </h4>
+                <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 14px; color: #1a5276; margin: 0; font-weight: bold;">
+                            १. प्रथम भाषा (मराठी) - क्षमता संपादणूक पडताळणी :-
+                        </h4>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                            <label for="marathiTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;">मराठी विषय शिक्षक :-</label>
+                            <select id="marathiTeacher" name="marathiTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="">-- आधी शाळा निवडा --</option>
+                            </select>
+                        </div>
+                    </div>
                     <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 5px; font-size: 13px; background: #fff;">
                             <thead>
                                 <tr style="background-color: #f2f2f2; text-align: center;">
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
@@ -653,12 +649,20 @@
 
             // २. द्वितीय भाषा हिंदी तक्ता (उच्च प्राथमिकसाठी)
             let hindiTable = `
-                <div style="margin-bottom: 20px;">
-                    <h4 style="font-size: 14px; color: #1a5276; margin-bottom: 8px; font-weight: bold;">
-                        २. द्वितीय भाषा (हिंदी) - क्षमता संपादणूक पडताळणी :-
-                    </h4>
+                <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 14px; color: #1a5276; margin: 0; font-weight: bold;">
+                            २. द्वितीय भाषा (हिंदी) - क्षमता संपादणूक पडताळणी :-
+                        </h4>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                            <label for="hindiTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;">हिंदी विषय शिक्षक :-</label>
+                            <select id="hindiTeacher" name="hindiTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="">-- आधी शाळा निवडा --</option>
+                            </select>
+                        </div>
+                    </div>
                     <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 5px; font-size: 13px; background: #fff;">
                             <thead>
                                 <tr style="background-color: #f2f2f2; text-align: center;">
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
@@ -712,12 +716,20 @@
             // ३. तृतीय भाषा इंग्रजी तक्ता
             let engNumber = (schoolType === 'upper_primary') ? '३' : '२';
             let englishTable = `
-                <div style="margin-bottom: 10px;">
-                    <h4 style="font-size: 14px; color: #1a5276; margin-bottom: 8px; font-weight: bold;">
-                        ${engNumber}. तृतीय भाषा (इंग्रजी / English) - क्षमता संपादणूक पडताळणी :-
-                    </h4>
+                <div style="margin-bottom: 10px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 14px; color: #1a5276; margin: 0; font-weight: bold;">
+                            ${engNumber}. तृतीय भाषा (इंग्रजी / English) - क्षमता संपादणूक पडताळणी :-
+                        </h4>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                            <label for="englishTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;">इंग्रजी विषय शिक्षक :-</label>
+                            <select id="englishTeacher" name="englishTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="">-- आधी शाळा निवडा --</option>
+                            </select>
+                        </div>
+                    </div>
                     <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 5px; font-size: 13px; background: #fff;">
                             <thead>
                                 <tr style="background-color: #f2f2f2; text-align: center;">
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">Skill (क्षमता)</th>
@@ -773,6 +785,9 @@
             } else {
                 container.innerHTML = marathiTable + englishTable;
             }
+
+            // ड्रॉप-डाऊन पुन्हा अपडेट करण्यासाठी शाळा निवडीचे फंक्शन कॉल करणे
+            updateSchoolDetails();
         }
     </script>
 </body>
