@@ -600,7 +600,7 @@
                             <thead>
                                 <tr style="background-color: #f2f2f2; text-align: center;">
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
-                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादणूक (विद्यार्थी टक्केवारी) (%)</th>
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
                                 </tr>
                             </thead>
@@ -647,7 +647,7 @@
                 </div>
             `;
 
-            // २. द्वितीय भाषा हिंदी तक्ता (उच्च प्राथमिकसाठी)
+            // २. द्वितीय भाषा हिंदी 
             let hindiTable = `
                 <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
@@ -655,7 +655,7 @@
                             २. द्वितीय भाषा (हिंदी) - क्षमता संपादणूक पडताळणी :-
                         </h4>
                         <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
-                            <label for="hindiTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;">हिंदी विषय शिक्षक :-</label>
+                            <label for="hindiTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;" white space: nowrap;">हिंदी विषय शिक्षक :-</label>
                             <select id="hindiTeacher" name="hindiTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
                                 <option value="">-- आधी शाळा निवडा --</option>
                             </select>
@@ -666,18 +666,18 @@
                             <thead>
                                 <tr style="background-color: #f2f2f2; text-align: center;">
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
-                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादणूक (विद्यार्थी टक्केवारी) (%)</th>
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">पठन (वाचन)</td>
+                                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">(वाचन)</td>
                                     <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="hin_reading_pct" name="hin_reading_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
                                     <td style="border: 1px solid #ccc; padding: 6px;">
                                         <input list="hin_reading_list" id="hin_reading_remark" name="hin_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
                                         <datalist id="hin_reading_list">
-                                            <option value="उत्कृष्ट: छात्र हिंदी वाचन स्पष्ट उच्चारण और सही गति के साथ करते हैं।"></option>
+                                            <option value="उत्कृष्ट:  हिंदी वाचन स्पष्ट उच्चारण और सही गति के साथ करते हैं।"></option>
                                             <option value="उत्तम: अधिकांश छात्र समझकर वाचन करने में सक्षम हैं।"></option>
                                             <option value="सरासरी: कठिन शब्दों के उच्चारण और वाचन अभ्यास की आवश्यकता है।"></option>
                                         </datalist>
@@ -722,7 +722,7 @@
                             ${engNumber}. तृतीय भाषा (इंग्रजी / English) - क्षमता संपादणूक पडताळणी :-
                         </h4>
                         <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
-                            <label for="englishTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50;">इंग्रजी विषय शिक्षक :-</label>
+                            <label for="englishTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50; white-space: nowrap;">इंग्रजी विषय शिक्षक :-</label>
                             <select id="englishTeacher" name="englishTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
                                 <option value="">-- आधी शाळा निवडा --</option>
                             </select>
@@ -733,7 +733,7 @@
                             <thead>
                                 <tr style="background-color: #f2f2f2; text-align: center;">
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">Skill (क्षमता)</th>
-                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादणूक (विद्यार्थी टक्केवारी)(%)</th>
                                     <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय (Remarks)</th>
                                 </tr>
                             </thead>
