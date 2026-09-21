@@ -440,16 +440,16 @@
                         <div style="background-color: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid #dee2e6; margin-bottom: 15px;">
                             <div class="form-group" style="margin-bottom: 0;">
                                 <label for="schoolTypeSelect" style="font-size: 13px; font-weight: bold; color: #1a5276;">
-                                    शाळेचा प्रकार निवडा (भाषा तक्त्यांसाठी) :-
+                                    शाळेचा प्रकार निवडा (विषय तक्त्यांसाठी) :-
                                 </label>
                                 <select id="schoolTypeSelect" name="schoolTypeSelect" style="width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; margin-top: 4px;" onchange="renderLanguageTables()">
-                                    <option value="primary">प्राथमिक शाळा (इ. १ ली ते ४ थी) - [मराठी, इंग्रजी २ विषय]</option>
-                                    <option value="upper_primary">उच्च प्राथमिक शाळा (इ. १ ली ते ७ वी / ८ वी) - [मराठी, हिंदी, इंग्रजी ३ विषय]</option>
+                                    <option value="primary">प्राथमिक शाळा (इ. १ ली ते ४ थी) - [मराठी, इंग्रजी, गणित ३ विषय]</option>
+                                    <option value="upper_primary">उच्च प्राथमिक शाळा (इ. १ ली ते ७ वी / ८ वी) - [मराठी, हिंदी, इंग्रजी, गणित ४ विषय]</option>
                                 </select>
                             </div>
                         </div>
 
-                        <!-- भाषा क्षमतेचे dynamic तक्ते (विषयनिहाय स्वतंत्र शिक्षक निवडीसह) -->
+                        <!-- क्षमतेचे dynamic तक्ते (विषयनिहाय स्वतंत्र शिक्षक निवडीसह) -->
                         <div id="languageTablesContainer"></div>
 
                     </div>
@@ -581,7 +581,7 @@
             const schoolType = schoolTypeSelect.value;
             const container = document.getElementById('languageTablesContainer');
             
-            // १. प्रथम भाषा मराठी तक्ता (सुधारित हेडरसह)
+            // १. प्रथम भाषा मराठी तक्ता
             let marathiTable = `
                 <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
@@ -647,22 +647,19 @@
                 </div>
             `;
 
-            // २. द्वितीय भाषा हिंदी 
+            // २. द्वितीय भाषा हिंदी (फक्त उच्च प्राथमिकसाठी)
             let hindiTable = `
                 <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
-                        <h4 style="font-size: 14px; color: #1a5276; margin: 0; font-weight: bold;">
-                        </div><div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
-    <h4 style="font-size: 13px; color: #1a5276; margin: 0; font-weight: bold; white-space: nowrap;">
-        २. द्वितीय भाषा (हिंदी) - क्षमता संपादणूक पडताळणी :-
-    </h4>
-    <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
-        <label for="hindiTeacher" style="font-size: 12px; font-weight: bold; color: #2c3e50; white-space: nowrap;">हिंदी विषय शिक्षक :-</label>
-        <select id="hindiTeacher" name="hindiTeacher" class="teacher-dropdown" style="padding: 3px 6px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
-            <option value="">-- आधी शाळा निवडा --</option>
-        </select>
-    </div>
-</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 13px; color: #1a5276; margin: 0; font-weight: bold; white-space: nowrap;">
+                            २. द्वितीय भाषा (हिंदी) - क्षमता संपादणूक पडताळणी :-
+                        </h4>
+                        <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            <label for="hindiTeacher" style="font-size: 12px; font-weight: bold; color: #2c3e50; white-space: nowrap;">हिंदी विषय शिक्षक :-</label>
+                            <select id="hindiTeacher" name="hindiTeacher" class="teacher-dropdown" style="padding: 3px 6px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="">-- आधी शाळा निवडा --</option>
+                            </select>
+                        </div>
                     </div>
                     <div style="overflow-x: auto;">
                         <table style="width: 100%; border-collapse: collapse; margin-bottom: 5px; font-size: 13px; background: #fff;">
@@ -675,7 +672,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">(वाचन)</td>
+                                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">वाचन</td>
                                     <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="hin_reading_pct" name="hin_reading_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
                                     <td style="border: 1px solid #ccc; padding: 6px;">
                                         <input list="hin_reading_list" id="hin_reading_remark" name="hin_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
@@ -716,17 +713,17 @@
                 </div>
             `;
 
-            // ३. तृतीय भाषा इंग्रजी तक्ता
+            // ३. इंग्रजी तक्ता (प्राथमिकसाठी क्र. २, उच्च प्राथमिकसाठी क्र. ३)
             let engNumber = (schoolType === 'upper_primary') ? '३' : '२';
             let englishTable = `
-                <div style="margin-bottom: 10px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
-                        <h4 style="font-size: 14px; color: #1a5276; margin: 0; font-weight: bold;">
+                <div style="margin-bottom: 20px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 13px; color: #1a5276; margin: 0; font-weight: bold; white-space: nowrap;">
                             ${engNumber}. तृतीय भाषा (इंग्रजी / English) - क्षमता संपादणूक पडताळणी :-
                         </h4>
-                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
-                            <label for="englishTeacher" style="font-size: 13px; font-weight: bold; color: #2c3e50; white-space: nowrap;">इंग्रजी विषय शिक्षक :-</label>
-                            <select id="englishTeacher" name="englishTeacher" class="teacher-dropdown" style="padding: 4px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #ccc;">
+                        <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            <label for="englishTeacher" style="font-size: 12px; font-weight: bold; color: #2c3e50; white-space: nowrap;">इंग्रजी विषय शिक्षक :-</label>
+                            <select id="englishTeacher" name="englishTeacher" class="teacher-dropdown" style="padding: 3px 6px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
                                 <option value="">-- आधी शाळा निवडा --</option>
                             </select>
                         </div>
@@ -782,65 +779,73 @@
                     </div>
                 </div>
             `;
-<div style="margin-bottom: 10px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
-        <h4 style="font-size: 13px; color: #1a5276; margin: 0; font-weight: bold; white-space: nowrap;">
-            ३. गणित - क्षमता संपादणूक पडताळणी :-
-        </h4>
-        <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
-            <label for="mathTeacher" style="font-size: 12px; font-weight: bold; color: #2c3e50; white-space: nowrap;">गणित विषय शिक्षक :-</label>
-            <select id="mathTeacher" name="mathTeacher" class="teacher-dropdown" style="padding: 3px 6px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
-                <option value="">-- आधी शाळा निवडा --</option>
-            </select>
-        </div>
-    </div>
 
-    <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; background-color: #ffffff;">
-        <thead>
-            <tr style="background-color: #f2f4f4; text-align: center; font-weight: bold;">
-                <th style="border: 1px solid #ccc; padding: 6px; width: 30%;">क्षमता</th>
-                <th style="border: 1px solid #ccc; padding: 6px; width: 35%;">संपादणूक विद्यार्थी टक्केवारी (%)</th>
-                <th style="border: 1px solid #ccc; padding: 6px; width: 35%;">अभिप्राय</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center; font-weight: bold;">संख्याज्ञान</td>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                    <input type="text" name="math_num_knowledge_pct" placeholder="उदा. 85%" style="width: 90%; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px;">
-                </td>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                    <input type="text" name="math_num_knowledge_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 95%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
-                </td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center; font-weight: bold;">संख्येवरील क्रिया</td>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                    <input type="text" name="math_operations_pct" placeholder="उदा. 75%" style="width: 90%; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px;">
-                </td>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                    <input type="text" name="math_operations_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 95%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
-                </td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center; font-weight: bold;">शाब्दिक उदाहरणे</td>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                    <input type="text" name="math_word_problems_pct" placeholder="उदा. 80%" style="width: 90%; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px;">
-                </td>
-                <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                    <input type="text" name="math_word_problems_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 95%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+            // ४. गणित तक्ता (प्राथमिकसाठी क्र. ३, उच्च प्राथमिकसाठी क्र. ४)
+            let mathNumber = (schoolType === 'upper_primary') ? '४' : '३';
+            let mathTable = `
+                <div style="margin-bottom: 10px; border: 1px solid #e0e0e0; padding: 12px; border-radius: 6px; background-color: #fafafa;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; margin-bottom: 8px;">
+                        <h4 style="font-size: 13px; color: #1a5276; margin: 0; font-weight: bold; white-space: nowrap;">
+                            ${mathNumber}. गणित - क्षमता संपादणूक पडताळणी :-
+                        </h4>
+                        <div style="display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            <label for="mathTeacher" style="font-size: 12px; font-weight: bold; color: #2c3e50; white-space: nowrap;">गणित विषय शिक्षक :-</label>
+                            <select id="mathTeacher" name="mathTeacher" class="teacher-dropdown" style="padding: 3px 6px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="">-- आधी शाळा निवडा --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #f2f4f4; text-align: center; font-weight: bold;">
+                                    <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
+                                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादणूक (विद्यार्थी टक्केवारी) (%)</th>
+                                    <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid #ccc; padding: 8px; text-align: center; font-weight: bold;">संख्याज्ञान</td>
+                                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
+                                        <input type="number" id="math_num_knowledge_pct" name="math_num_knowledge_pct" min="0" max="100" placeholder="उदा. 85%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+                                    </td>
+                                    <td style="border: 1px solid #ccc; padding: 6px;">
+                                        <input type="text" id="math_num_knowledge_remark" name="math_num_knowledge_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ccc; padding: 8px; text-align: center; font-weight: bold;">संख्येवरील क्रिया</td>
+                                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
+                                        <input type="number" id="math_operations_pct" name="math_operations_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+                                    </td>
+                                    <td style="border: 1px solid #ccc; padding: 6px;">
+                                        <input type="text" id="math_operations_remark" name="math_operations_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ccc; padding: 8px; text-align: center; font-weight: bold;">शाब्दिक उदाहरणे</td>
+                                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
+                                        <input type="number" id="math_word_problems_pct" name="math_word_problems_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+                                    </td>
+                                    <td style="border: 1px solid #ccc; padding: 6px;">
+                                        <input type="text" id="math_word_problems_remark" name="math_word_problems_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+            // शाळा प्रकारानुसार तक्ते जोडणे
             if (schoolType === 'upper_primary') {
-                container.innerHTML = marathiTable + hindiTable + englishTable;
+                container.innerHTML = marathiTable + hindiTable + englishTable + mathTable;
             } else {
-                container.innerHTML = marathiTable + englishTable;
+                container.innerHTML = marathiTable + englishTable + mathTable;
             }
 
-            // ड्रॉप-डाऊन पुन्हा अपडेट करण्यासाठी शाळा निवडीचे फंक्शन कॉल करणे
+            // ड्रॉप-डाऊन शिक्षक सूची पुन्हा सिंक करणे
             updateSchoolDetails();
         }
     </script>
