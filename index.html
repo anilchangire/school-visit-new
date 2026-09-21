@@ -410,6 +410,65 @@
 </div>
     </div>
 </div>
+    <!-- ५. विद्यार्थी संवाद व प्रश्नोत्तरे याद्वारे संपादणूक पडताळणी -->
+<div class="card" style="margin-top: 15px;">
+    <div class="card-header">
+        <h3>५. विद्यार्थी संवाद व प्रश्नोत्तरे याद्वारे संपादणूक पडताळणी :- (किमान १ वर्ग)</h3>
+    </div>
+    <div class="card-body">
+        
+        <!-- रो १: इयत्ता, तुकडी आणि शिक्षकाचे नाव -->
+        <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px;">
+            
+            <div class="form-group" style="flex: 1; min-width: 100px; margin-bottom: 0;">
+                <label for="evalStdSelect" style="font-size: 13px;">इयत्ता :-</label>
+                <select id="evalStdSelect" name="evalStdSelect" required>
+                    <option value="">-- निवडा --</option>
+                    <option value="पहिली">पहिली</option>
+                    <option value="दुसरी">दुसरी</option>
+                    <option value="तिसरी">तिसरी</option>
+                    <option value="चौथी">चौथी</option>
+                    <option value="पाचवी">पाचवी</option>
+                    <option value="सहावी">सहावी</option>
+                    <option value="सातवी">सातवी</option>
+                    <option value="आठवी">आठवी</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="flex: 1; min-width: 90px; margin-bottom: 0;">
+                <label for="evalDivSelect" style="font-size: 13px;">तुकडी :-</label>
+                <select id="evalDivSelect" name="evalDivSelect" required>
+                    <option value="">-- निवडा --</option>
+                    <option value="अ">अ</option>
+                    <option value="ब">ब</option>
+                    <option value="क">क</option>
+                    <option value="ड">ड</option>
+                    <option value="नाही">नाही</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="flex: 2; min-width: 220px; margin-bottom: 0;">
+                <label for="evalTeacherSelect" style="font-size: 13px;">शिक्षकाचे नाव :-</label>
+                <select id="evalTeacherSelect" name="evalTeacherSelect" required>
+                    <option value="">-- आधी शाळा निवडा --</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- रो २: संपादणूक पडताळणी नोंदी व अभिप्राय -->
+        <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
+            <label for="evalRemarks" style="font-size: 13px; font-weight: 600;">विद्यार्थी संवाद / प्रश्नोत्तरे व संपादणूक पातळीबाबत नोंदी व अभिप्राय :-</label>
+            <input list="eval_remarks_list" id="evalRemarks" name="evalRemarks" placeholder="-- अभिप्राय निवडा किंवा स्वतः टाईप करा --" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-top: 4px;">
+            <datalist id="eval_remarks_list">
+                <option value="उत्कृष्ट: विद्यार्थ्यांनी विचारलेल्या प्रश्नांची उत्तरे आत्मविश्वासाने व अपेक्षित संपादणूक पातळीनुसार दिली."></option>
+                <option value="उत्तम: बहुतांश विद्यार्थ्यांची संकल्पना स्पष्ट असून संपादणूक दर्जा समाधानकारक आढळला."></option>
+                <option value="सरासरी: काही विद्यार्थ्यांना मूलभूत संकल्पना स्पष्ट करण्यासाठी अतिरिक्त सरावाची व मार्गदर्शनाची गरज आहे."></option>
+            </datalist>
+        </div>
+
+    </div>
+</div>
                 <!-- बटन्स -->
                 <div class="button-group no-print" style="margin-top: 20px; display: flex; gap: 10px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
