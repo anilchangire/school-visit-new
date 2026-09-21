@@ -469,6 +469,73 @@
 
     </div>
 </div>
+    <!-- प्रथम भाषा (मराठी) क्षमता संपादणूक तक्ता -->
+<div style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+    <h4 style="font-size: 14px; color: #2c3e50; margin-bottom: 10px; font-weight: bold;">
+        पडताळणी तपशील - प्रथम भाषा (मराठी) :-
+    </h4>
+
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+            <thead>
+                <tr style="background-color: #f2f2f2; text-align: center;">
+                    <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
+                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                    <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- १. वाचन -->
+                <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">वाचन</td>
+                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
+                        <input type="number" id="marathi_reading_pct" name="marathi_reading_pct" min="0" max="100" placeholder="उदा. 85%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+                    </td>
+                    <td style="border: 1px solid #ccc; padding: 6px;">
+                        <input list="marathi_reading_list" id="marathi_reading_remark" name="marathi_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                        <datalist id="marathi_reading_list">
+                            <option value="उत्कृष्ट: बहुतांश विद्यार्थी प्रवाहीपणे व प्रकट वाचन अचूक करतात."></option>
+                            <option value="उत्तम: विद्यार्थी समजपूर्वक वाचन करतात, उच्चारण चांगले आहे."></option>
+                            <option value="सरासरी: काही विद्यार्थ्यांना जोडाक्षर व कठीण शब्दांच्या वाचनासाठी सरावाची गरज आहे."></option>
+                        </datalist>
+                    </td>
+                </tr>
+
+                <!-- २. लेखन -->
+                <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">लेखन</td>
+                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
+                        <input type="number" id="marathi_writing_pct" name="marathi_writing_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+                    </td>
+                    <td style="border: 1px solid #ccc; padding: 6px;">
+                        <input list="marathi_writing_list" id="marathi_writing_remark" name="marathi_writing_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                        <datalist id="marathi_writing_list">
+                            <option value="उत्कृष्ट: लेखन सुवाच्य, शुद्ध आणि व्याकरणदृष्ट्या अचूक आहे."></option>
+                            <option value="उत्तम: अनुलेखन व श्रुतलेखन समाधानकारक आहे."></option>
+                            <option value="सरासरी: वेलांटी, मात्रा व काना यांसारख्या वेलांटी/ह्रस्व-दीर्घ चुकांवर सुधारात्मक सरावाची गरज."></option>
+                        </datalist>
+                    </td>
+                </tr>
+
+                <!-- ३. अभिव्यक्ती -->
+                <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">अभिव्यक्ती</td>
+                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
+                        <input type="number" id="marathi_expression_pct" name="marathi_expression_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
+                    </td>
+                    <td style="border: 1px solid #ccc; padding: 6px;">
+                        <input list="marathi_expression_list" id="marathi_expression_remark" name="marathi_expression_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                        <datalist id="marathi_expression_list">
+                            <option value="उत्कृष्ट: विद्यार्थी आपले विचार आत्मविश्वासाने आणि स्वतःच्या शब्दांत मांडतात."></option>
+                            <option value="उत्तम: विचारलेल्या प्रश्नांना विद्यार्थी योग्य स्वरूपात तोंडी प्रतिसाद देतात."></option>
+                            <option value="सरासरी: विद्यार्थ्यांना व्यासपीठ/संभाषण भीती दूर करून स्व-अभिव्यक्तीसाठी प्रोत्साहनाची गरज."></option>
+                        </datalist>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
                 <!-- बटन्स -->
                 <div class="button-group no-print" style="margin-top: 20px; display: flex; gap: 10px;">
                     <button type="button" class="btn btn-pdf" onclick="generatePDF()">📥 PDF डाऊनलोड करा</button>
