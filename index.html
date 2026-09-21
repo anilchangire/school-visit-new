@@ -410,16 +410,15 @@
 </div>
     </div>
 </div>
-    <!-- ५. विद्यार्थी संवाद व प्रश्नोत्तरे याद्वारे संपादणूक पडताळणी -->
+     <!-- ५. विद्यार्थी संवाद व प्रश्नोत्तरे याद्वारे संपादणूक पडताळणी -->
 <div class="card" style="margin-top: 15px;">
     <div class="card-header">
         <h3>५. विद्यार्थी संवाद व प्रश्नोत्तरे याद्वारे संपादणूक पडताळणी :- (किमान १ वर्ग)</h3>
     </div>
     <div class="card-body">
         
-        <!-- रो १: इयत्ता, तुकडी आणि शिक्षकाचे नाव -->
+        <!-- रो १: इयत्ता, तुकडी, शिक्षक निवड -->
         <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px;">
-            
             <div class="form-group" style="flex: 1; min-width: 100px; margin-bottom: 0;">
                 <label for="evalStdSelect" style="font-size: 13px;">इयत्ता :-</label>
                 <select id="evalStdSelect" name="evalStdSelect" required>
@@ -453,166 +452,27 @@
                     <option value="">-- आधी शाळा निवडा --</option>
                 </select>
             </div>
-
         </div>
 
-        <!-- रो २: संपादणूक पडताळणी नोंदी व अभिप्राय -->
-        <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
-            <label for="evalRemarks" style="font-size: 13px; font-weight: 600;">विद्यार्थी संवाद / प्रश्नोत्तरे व संपादणूक पातळीबाबत नोंदी व अभिप्राय :-</label>
-            <input list="eval_remarks_list" id="evalRemarks" name="evalRemarks" placeholder="-- अभिप्राय निवडा किंवा स्वतः टाईप करा --" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-top: 4px;">
-            <datalist id="eval_remarks_list">
-                <option value="उत्कृष्ट: विद्यार्थ्यांनी विचारलेल्या प्रश्नांची उत्तरे आत्मविश्वासाने व अपेक्षित संपादणूक पातळीनुसार दिली."></option>
-                <option value="उत्तम: बहुतांश विद्यार्थ्यांची संकल्पना स्पष्ट असून संपादणूक दर्जा समाधानकारक आढळला."></option>
-                <option value="सरासरी: काही विद्यार्थ्यांना मूलभूत संकल्पना स्पष्ट करण्यासाठी अतिरिक्त सरावाची व मार्गदर्शनाची गरज आहे."></option>
-            </datalist>
+        <!-- रो २: शाळेचा प्रकार निवड (प्राथमिक / उच्च प्राथमिक) -->
+        <div style="background-color: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid #dee2e6; margin-bottom: 15px;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label for="schoolTypeSelect" style="font-size: 13px; font-weight: bold; color: #1a5276;">
+                    शाळेचा प्रकार निवडा (भाषा तक्त्यांसाठी) :-
+                </label>
+                <select id="schoolTypeSelect" name="schoolTypeSelect" style="width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; margin-top: 4px;" onchange="renderLanguageTables()">
+                    <option value="primary">प्राथमिक शाळा (इ. १ ली ते ४ थी) - [मराठी, इंग्रजी २ विषय]</option>
+                    <option value="upper_primary">उच्च प्राथमिक शाळा (इ. १ ली ते ७ वी / ८ वी) - [मराठी, हिंदी, इंग्रजी ३ विषय]</option>
+                </select>
+            </div>
         </div>
 
-    </div>
-</div>
-    <!-- प्रथम भाषा (मराठी) क्षमता संपादणूक तक्ता -->
-<div style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
-    <h4 style="font-size: 14px; color: #2c3e50; margin-bottom: 10px; font-weight: bold;">
-        1) प्रथम भाषा (मराठी) :-
-    </h4>
+        <!-- भाषा क्षमतेचे dynamic तक्ते जोडण्यासाठी Container -->
+        <div id="languageTablesContainer">
+            <!-- JavaScript द्वारे येथे तक्ते LOAD होतील -->
+        </div>
 
-    <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
-            <thead>
-                <tr style="background-color: #f2f2f2; text-align: center;">
-                    <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
-                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
-                    <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- १. वाचन -->
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">वाचन</td>
-                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                        <input type="number" id="marathi_reading_pct" name="marathi_reading_pct" min="0" max="100" placeholder="उदा. 85%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
-                    </td>
-                    <td style="border: 1px solid #ccc; padding: 6px;">
-                        <input list="marathi_reading_list" id="marathi_reading_remark" name="marathi_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
-                        <datalist id="marathi_reading_list">
-                            <option value="उत्कृष्ट: बहुतांश विद्यार्थी प्रवाहीपणे व प्रकट वाचन अचूक करतात."></option>
-                            <option value="उत्तम: विद्यार्थी समजपूर्वक वाचन करतात, उच्चारण चांगले आहे."></option>
-                            <option value="सरासरी: काही विद्यार्थ्यांना जोडाक्षर व कठीण शब्दांच्या वाचनासाठी सरावाची गरज आहे."></option>
-                        </datalist>
-                    </td>
-                </tr>
-
-                <!-- २. लेखन -->
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">लेखन</td>
-                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                        <input type="number" id="marathi_writing_pct" name="marathi_writing_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
-                    </td>
-                    <td style="border: 1px solid #ccc; padding: 6px;">
-                        <input list="marathi_writing_list" id="marathi_writing_remark" name="marathi_writing_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
-                        <datalist id="marathi_writing_list">
-                            <option value="उत्कृष्ट: लेखन सुवाच्य, शुद्ध आणि व्याकरणदृष्ट्या अचूक आहे."></option>
-                            <option value="उत्तम: अनुलेखन व श्रुतलेखन समाधानकारक आहे."></option>
-                            <option value="सरासरी: वेलांटी, मात्रा व काना यांसारख्या वेलांटी/ह्रस्व-दीर्घ चुकांवर सुधारात्मक सरावाची गरज."></option>
-                        </datalist>
-                    </td>
-                </tr>
-
-                <!-- ३. अभिव्यक्ती -->
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">अभिव्यक्ती</td>
-                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                        <input type="number" id="marathi_expression_pct" name="marathi_expression_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
-                    </td>
-                    <td style="border: 1px solid #ccc; padding: 6px;">
-                        <input list="marathi_expression_list" id="marathi_expression_remark" name="marathi_expression_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
-                        <datalist id="marathi_expression_list">
-                            <option value="उत्कृष्ट: विद्यार्थी आपले विचार आत्मविश्वासाने आणि स्वतःच्या शब्दांत मांडतात."></option>
-                            <option value="उत्तम: विचारलेल्या प्रश्नांना विद्यार्थी योग्य स्वरूपात तोंडी प्रतिसाद देतात."></option>
-                            <option value="सरासरी: विद्यार्थ्यांना व्यासपीठ/संभाषण भीती दूर करून स्व-अभिव्यक्तीसाठी प्रोत्साहनाची गरज."></option>
-                        </datalist>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-    <!-- २. द्वितीय / तृतीय भाषा (निवड व क्षमता संपादणूक तक्ता) -->
-<div style="margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px;">
-    
-    <!-- भाषा निवडण्याचा ड्रॉप-डाऊन -->
-    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 15px; background-color: #f9f9f9; padding: 10px; border-radius: 6px; border: 1px solid #e0e0e0;">
-        <label for="secondLanguageSelect" style="font-size: 13px; font-weight: bold; color: #2c3e50;">
-            द्वितीय / तृतीय भाषा निवडा :-
-        </label>
-        <select id="secondLanguageSelect" name="secondLanguageSelect" style="flex: 1; min-width: 200px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;" onchange="toggleLanguageTable()">
-            <option value="">-- भाषा निवडा (हिंदी / इंग्रजी) --</option>
-            <option value="हिंदी">हिंदी (द्वितीय भाषा)</option>
-            <option value="इंग्रजी">इंग्रजी / English (तृतीय भाषा)</option>
-        </select>
-    </div>
-
-    <!-- क्षमता संपादणूक तक्ता (Dynamic Language Table) -->
-    <div id="languageTableContainer" style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
-            <thead>
-                <tr style="background-color: #f2f2f2; text-align: center;">
-                    <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
-                    <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
-                    <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- १. वाचन / पठन / Reading -->
-                <tr>
-                    <td id="lang_skill1_label" style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">वाचन (Reading)</td>
-                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                        <input type="number" id="lang_reading_pct" name="lang_reading_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
-                    </td>
-                    <td style="border: 1px solid #ccc; padding: 6px;">
-                        <input list="lang_reading_list" id="lang_reading_remark" name="lang_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
-                        <datalist id="lang_reading_list">
-                            <option value="उत्कृष्ट: विद्यार्थी प्रवाहीपणे व स्पष्ट उच्चारासह वाचन करतात."></option>
-                            <option value="उत्तम: बहुतांश विद्यार्थी समजपूर्वक वाचन करतात."></option>
-                            <option value="सरासरी: कठीण शब्दांच्या वाचनासाठी सरावाची गरज आहे."></option>
-                        </datalist>
-                    </td>
-                </tr>
-
-                <!-- २. लेखन / Writing -->
-                <tr>
-                    <td id="lang_skill2_label" style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">लेखन (Writing)</td>
-                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                        <input type="number" id="lang_writing_pct" name="lang_writing_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
-                    </td>
-                    <td style="border: 1px solid #ccc; padding: 6px;">
-                        <input list="lang_writing_list" id="lang_writing_remark" name="lang_writing_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
-                        <datalist id="lang_writing_list">
-                            <option value="उत्कृष्ट: लेखन सुवाच्य, शुद्ध आणि व्याकरणदृष्ट्या अचूक आहे."></option>
-                            <option value="उत्तम: अनुलेखन व श्रुतलेखन समाधानकारक आहे."></option>
-                            <option value="सरासरी: सुधारात्मक सरावाची व वेलांटी/स्पेलिंग दुरुस्तीची गरज आहे."></option>
-                        </datalist>
-                    </td>
-                </tr>
-
-                <!-- ३. संभाषण / अभिव्यक्ती / Speaking -->
-                <tr>
-                    <td id="lang_skill3_label" style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">संभाषण / अभिव्यक्ती</td>
-                    <td style="border: 1px solid #ccc; padding: 6px; text-align: center;">
-                        <input type="number" id="lang_expression_pct" name="lang_expression_pct" min="0" max="100" placeholder="उदा. 70%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;">
-                    </td>
-                    <td style="border: 1px solid #ccc; padding: 6px;">
-                        <input list="lang_expression_list" id="lang_expression_remark" name="lang_expression_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
-                        <datalist id="lang_expression_list">
-                            <option value="उत्कृष्ट: विद्यार्थी आत्मविश्वासाने संभाषणात सहभाग घेतात."></option>
-                            <option value="उत्तम: विचारलेल्या प्रश्नांना विद्यार्थी योग्य तोंडी प्रतिसाद देतात."></option>
-                            <option value="सरासरी: मौखिक अभिव्यक्ती वाढवण्यासाठी अधिक सराव आवश्यक आहे."></option>
-                        </datalist>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+    </div
     
                 <!-- बटन्स -->
                 <div class="button-group no-print" style="margin-top: 20px; display: flex; gap: 10px;">
@@ -720,6 +580,197 @@
                 if (btnGroup) btnGroup.style.display = 'flex';
             });
         }
+        function renderLanguageTables() {
+    const schoolType = document.getElementById('schoolTypeSelect').value;
+    const container = document.getElementById('languageTablesContainer');
+    
+    // १. प्रथम भाषा मराठी तक्ता (सर्व शाळांसाठी अनिवार्य)
+    let marathiTable = `
+        <div style="margin-bottom: 20px;">
+            <h4 style="font-size: 14px; color: #1a5276; margin-bottom: 8px; font-weight: bold;">
+                १. प्रथम भाषा (मराठी) - क्षमता संपादणूक पडताळणी :-
+            </h4>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2; text-align: center;">
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">वाचन</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="mar_reading_pct" name="mar_reading_pct" min="0" max="100" placeholder="उदा. 85%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="mar_reading_list" id="mar_reading_remark" name="mar_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="mar_reading_list">
+                                    <option value="उत्कृष्ट: विद्यार्थी प्रवाहीपणे व स्पष्ट उच्चारासह वाचन करतात."></option>
+                                    <option value="उत्तम: बहुतांश विद्यार्थी समजपूर्वक वाचन करतात."></option>
+                                    <option value="सरासरी: जोडाक्षर व कठीण शब्दांच्या वाचनासाठी सरावाची गरज आहे."></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">लेखन</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="mar_writing_pct" name="mar_writing_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="mar_writing_list" id="mar_writing_remark" name="mar_writing_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="mar_writing_list">
+                                    <option value="उत्कृष्ट: लेखन सुवाच्य, शुद्ध आणि व्याकरणदृष्ट्या अचूक आहे."></option>
+                                    <option value="उत्तम: अनुलेखन व श्रुतलेखन दर्जा समाधानकारक आहे."></option>
+                                    <option value="सरासरी: काना-मात्रा व वेलांटी चुकांवर सरावाची गरज."></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">अभिव्यक्ती</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="mar_expr_pct" name="mar_expr_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="mar_expr_list" id="mar_expr_remark" name="mar_expr_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="mar_expr_list">
+                                    <option value="उत्कृष्ट: विद्यार्थी आपले विचार आत्मविश्वासाने मांडतात."></option>
+                                    <option value="उत्तम: विचारलेल्या प्रश्नांना योग्य तोंडी प्रतिसाद देतात."></option>
+                                    <option value="सरासरी: स्व-अभिव्यक्ती आणि संभाषणासाठी प्रोत्साहनाची गरज."></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    // २. द्वितीय भाषा हिंदी तक्ता (केवळ उच्च प्राथमिकसाठी)
+    let hindiTable = `
+        <div style="margin-bottom: 20px;">
+            <h4 style="font-size: 14px; color: #1a5276; margin-bottom: 8px; font-weight: bold;">
+                २. द्वितीय भाषा (हिंदी) - क्षमता संपादणूक पडताळणी :-
+            </h4>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2; text-align: center;">
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">क्षमता</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">पठन (वाचन)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="hin_reading_pct" name="hin_reading_pct" min="0" max="100" placeholder="उदा. 80%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="hin_reading_list" id="hin_reading_remark" name="hin_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="hin_reading_list">
+                                    <option value="उत्कृष्ट: छात्र हिंदी वाचन स्पष्ट उच्चारण और सही गति के साथ करते हैं।"></option>
+                                    <option value="उत्तम: अधिकांश छात्र समझकर वाचन करने में सक्षम हैं।"></option>
+                                    <option value="सरासरी: कठिन शब्दों के उच्चारण और वाचन अभ्यास की आवश्यकता है।"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">लेखन</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="hin_writing_pct" name="hin_writing_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="hin_writing_list" id="hin_writing_remark" name="hin_writing_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="hin_writing_list">
+                                    <option value="उत्कृष्ट: छात्रों का लेखन सुवाच्य, शुद्ध और वर्तनी की दृष्टि से सही है।"></option>
+                                    <option value="उत्तम: अनुलेखन और श्रुतलेखन का स्तर संतोषजनक है।"></option>
+                                    <option value="सरासरी: मात्राओं और मानक वर्तनी के सुधारात्मक अभ्यास की आवश्यकता है।"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">संभाषण / अभिव्यक्ति</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="hin_expr_pct" name="hin_expr_pct" min="0" max="100" placeholder="उदा. 70%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="hin_expr_list" id="hin_expr_remark" name="hin_expr_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="hin_expr_list">
+                                    <option value="उत्कृष्ट: छात्र आत्मविश्वास के साथ हिंदी में अपने विचार व्यक्त करते हैं।"></option>
+                                    <option value="उत्तम: पूछे गए प्रश्नों का छात्र सही और सरल शब्दों में उत्तर देते हैं।"></option>
+                                    <option value="सरासरी: मौखिक अभिव्यक्ति और संवाद कौशल बढ़ाने हेतु अधिक प्रोत्साहन आवश्यक है।"></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    // ३. तृतीय भाषा इंग्रजी तक्ता (क्रम संख्या शाळा प्रकारानुसार बदलेल)
+    let engNumber = (schoolType === 'upper_primary') ? '३' : '२';
+    let englishTable = `
+        <div style="margin-bottom: 10px;">
+            <h4 style="font-size: 14px; color: #1a5276; margin-bottom: 8px; font-weight: bold;">
+                ${engNumber}. तृतीय भाषा (इंग्रजी / English) - क्षमता संपादणूक पडताळणी :-
+            </h4>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2; text-align: center;">
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 20%;">Skill (क्षमता)</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 25%;">संपादनूक विद्यार्थी टक्केवारी (%)</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; width: 55%;">अभिप्राय (Remarks)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">Reading (वाचन)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="eng_reading_pct" name="eng_reading_pct" min="0" max="100" placeholder="उदा. 75%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="eng_reading_list" id="eng_reading_remark" name="eng_reading_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="eng_reading_list">
+                                    <option value="उत्कृष्ट: Students read simple English sentences fluently with correct pronunciation."></option>
+                                    <option value="उत्तम: Most students can read words and short sentences with understanding."></option>
+                                    <option value="सरासरी: Phonic drill and guided reading practice is needed for struggling readers."></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">Writing (लेखन)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="eng_writing_pct" name="eng_writing_pct" min="0" max="100" placeholder="उदा. 70%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="eng_writing_list" id="eng_writing_remark" name="eng_writing_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="eng_writing_list">
+                                    <option value="उत्कृष्ट: Student handwriting is neat, legible, and accurate in spelling."></option>
+                                    <option value="उत्तम: Copy writing and dictation performance is satisfactory."></option>
+                                    <option value="सरासरी: Practice on letter formation and four-line writing is required."></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px; font-weight: 600; text-align: center;">Speaking (संभाषण)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; text-align: center;"><input type="number" id="eng_expr_pct" name="eng_expr_pct" min="0" max="100" placeholder="उदा. 65%" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">
+                                <input list="eng_expr_list" id="eng_expr_remark" name="eng_expr_remark" placeholder="-- अभिप्राय निवडा किंवा टाईप करा --" style="width: 98%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                <datalist id="eng_expr_list">
+                                    <option value="उत्कृष्ट: Students confidently respond using simple English sentences and daily greetings."></option>
+                                    <option value="उत्तम: Students answer basic questions using words or short phrases correctly."></option>
+                                    <option value="सरासरी: More interactive oral practice and English games are recommended."></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    // शाळा प्रकारानुसार तक्त्यांची जोडणी
+    if (schoolType === 'upper_primary') {
+        container.innerHTML = marathiTable + hindiTable + englishTable;
+    } else {
+        container.innerHTML = marathiTable + englishTable;
+    }
+}
+
+// पेज लोड झाल्यावर बाय-डिफॉल्ट प्राथमिक शाळेचे २ तक्ते रन करणे
+document.addEventListener('DOMContentLoaded', function() {
+    renderLanguageTables();
+});
     </script>
 </body>
 </html>
